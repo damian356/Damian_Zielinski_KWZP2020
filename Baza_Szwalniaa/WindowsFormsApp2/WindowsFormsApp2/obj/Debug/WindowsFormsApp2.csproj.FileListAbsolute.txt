@@ -1,0 +1,16 @@
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.DetailsForm.resources
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Aplikacja_1.Form1.resources
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.dll
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.xml
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Diana\source\repos\Windows_forms_1\WindowsFormsApp1\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete

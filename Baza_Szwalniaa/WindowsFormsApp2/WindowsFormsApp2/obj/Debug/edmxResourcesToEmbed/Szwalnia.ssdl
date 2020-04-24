@@ -1,0 +1,1644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Baza_szwalniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Czesci_Obsluga">
+    <Key>
+      <PropertyRef Name="ID_Obslugi" />
+    </Key>
+    <Property Name="ID_Obslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Element" Type="int" Nullable="false" />
+    <Property Name="Ilosc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dokumentacja_Proces">
+    <Key>
+      <PropertyRef Name="ID_Dokumentacja_Proces" />
+    </Key>
+    <Property Name="ID_Dokumentacja_Proces" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Dokumentacji" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dokumentacje">
+    <Key>
+      <PropertyRef Name="ID_Dokumentacji" />
+    </Key>
+    <Property Name="ID_Dokumentacji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Rodzaj" Type="int" Nullable="false" />
+    <Property Name="ID_Pracownika" Type="int" Nullable="false" />
+    <Property Name="Data_Wykonania" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Baza_szwalnia.dbo.Dostawy_Zawartosc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Dostawy_Zawartosc">
+          <Property Name="ID_Dostawy" Type="int" />
+          <Property Name="ID_Element" Type="int" />
+          <Property Name="Ilosc_Dostarczona" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Elementy_Proces">
+    <Key>
+      <PropertyRef Name="ID_Proces_Technologiczny" />
+    </Key>
+    <Property Name="ID_Proces_Technologiczny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Element" Type="int" Nullable="false" />
+    <Property Name="Liczba" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Etapy_W_Procesie">
+    <Key>
+      <PropertyRef Name="ID_Proces_Technologiczny" />
+    </Key>
+    <Property Name="ID_Proces_Technologiczny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Etapu" Type="int" Nullable="false" />
+    <Property Name="Czas" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Etat">
+    <Key>
+      <PropertyRef Name="ID_Etat" />
+    </Key>
+    <Property Name="ID_Etat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Wymiar_Etatu" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Uwagi" Type="char" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Faktury">
+    <Key>
+      <PropertyRef Name="ID_Faktury" />
+    </Key>
+    <Property Name="ID_Faktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Zamowienia" Type="int" />
+    <Property Name="ID_Klienta" Type="int" />
+    <Property Name="Cena_Netto" Type="real" Nullable="false" />
+    <Property Name="Cena_Brutto" Type="real" Nullable="false" />
+    <Property Name="Podatek_VAT" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Faktury_Zewnetrzne">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nr_Faktury" Type="real" Nullable="false" />
+    <Property Name="ID_Grupa" Type="int" />
+    <Property Name="Nazwa_Firmy" Type="char" MaxLength="100" />
+    <Property Name="Cena_Netto" Type="real" Nullable="false" />
+    <Property Name="Cena_Brutto" Type="real" Nullable="false" />
+    <Property Name="Podatek" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grupa">
+    <Key>
+      <PropertyRef Name="ID_Grupa" />
+    </Key>
+    <Property Name="ID_Grupa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Jezyk">
+    <Key>
+      <PropertyRef Name="ID_Jezyk" />
+    </Key>
+    <Property Name="ID_Jezyk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Jezyk" Type="char" MaxLength="40" Nullable="false" />
+    <Property Name="Informacje_Dodatkowe" Type="char" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="ID_Klienta" />
+    </Key>
+    <Property Name="ID_Klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Nazwisko" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Nazwa_Firmy" Type="char" MaxLength="100" />
+    <Property Name="NIP" Type="char" MaxLength="10" />
+    <Property Name="Adres" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="Telefon" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="E_Mail" Type="char" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Baza_szwalnia.dbo.Kontrola_Efektywnosci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Kontrola_Efektywnosci">
+    <Key>
+      <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      <PropertyRef Name="Data_Kontroli" />
+      <PropertyRef Name="Dokument" />
+      <PropertyRef Name="Zgodnosc_Zamowienia" />
+      <PropertyRef Name="Liczba_Poprawnych" />
+      <PropertyRef Name="Liczba_Blednych" />
+    </Key>
+    <Property Name="ID_Procesu_Produkcyjnego" Type="int" Nullable="false" />
+    <Property Name="Data_Kontroli" Type="smalldatetime" Nullable="false" />
+    <Property Name="Dokument" Type="image" Nullable="false" />
+    <Property Name="Uwagi" Type="char" MaxLength="300" />
+    <Property Name="Zgodnosc_Zamowienia" Type="bit" Nullable="false" />
+    <Property Name="Liczba_Poprawnych" Type="int" Nullable="false" />
+    <Property Name="Liczba_Blednych" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Baza_szwalnia.dbo.Koszt_Jednostkowy' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Koszt_Jednostkowy">
+    <Key>
+      <PropertyRef Name="Koszt_Produkcji" />
+    </Key>
+    <Property Name="ID_Element" Type="int" />
+    <Property Name="Koszt_Produkcji" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Magazyn_Dostarczenia_Wewn">
+    <Key>
+      <PropertyRef Name="ID_Dostarczenia" />
+    </Key>
+    <Property Name="ID_Dostarczenia" Type="int" Nullable="false" />
+    <Property Name="ID_Pracownicy" Type="int" />
+    <Property Name="ID_Dostawy" Type="int" />
+    <Property Name="Ilosc_Dostarczona" Type="float" />
+    <Property Name="ID_Miejsca" Type="char" MaxLength="10" />
+    <Property Name="Data_Dostarczenia" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Magazyn_Dostarczenia_Zewn">
+    <Key>
+      <PropertyRef Name="ID_Dostarczenia" />
+    </Key>
+    <Property Name="ID_Dostarczenia" Type="int" Nullable="false" />
+    <Property Name="ID_Pracownicy" Type="int" />
+    <Property Name="ID_Zamowienia" Type="int" />
+    <Property Name="Ilosc_Dostarczona" Type="float" />
+    <Property Name="ID_Miejsca" Type="char" MaxLength="10" />
+    <Property Name="Data_Dostarczenia" Type="char" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Baza_szwalnia.dbo.Magazyn_Dostawcy_Oferta' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Magazyn_Dostawcy_Oferta">
+          <Property Name="ID_Oferta" Type="char" MaxLength="10" />
+          <Property Name="ID_Zamowienia" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Magazyn_Dostawcy_Zaopatrzenie">
+    <Key>
+      <PropertyRef Name="ID_Dostawcy" />
+    </Key>
+    <Property Name="ID_Dostawcy" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="20" />
+    <Property Name="Telefon_1" Type="int" />
+    <Property Name="Telefon_2" Type="int" />
+    <Property Name="Email" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Magazyn_Elementy">
+    <Key>
+      <PropertyRef Name="ID_Element" />
+    </Key>
+    <Property Name="ID_Element" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Element_Typ" Type="int" />
+    <Property Name="Element_Nazwa" Type="char" MaxLength="20" />
+    <Property Name="Element_Oznaczenie" Type="char" MaxLength="20" />
+    <Property Name="Okres_Przydatnosci_Miesiace" Type="int" />
+    <Property Name="Element_Ilosc_W_Paczce" Type="real" />
+    <Property Name="ID_Jednostka" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Baza_szwalnia.dbo.Magazyn_Elementy_Cechy' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Magazyn_Elementy_Cechy">
+          <Property Name="ID_Element" Type="int" />
+          <Property Name="ID_Cecha" Type="int" />
+          <Property Name="Wartosc_Cechy" Type="real" />
+        </EntityType>-->
+  <EntityType Name="Magazyn_Elementy_Cechy_Slownik">
+    <Key>
+      <PropertyRef Name="ID_Cecha" />
+    </Key>
+    <Property Name="ID_Cecha" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cecha" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Magazyn_Elementy_Jednostki">
+    <Key>
+      <PropertyRef Name="ID_jednostka" />
+    </Key>
+    <Property Name="ID_jednostka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Jednostka" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Magazyn_Elementy_Typy">
+    <Key>
+      <PropertyRef Name="ID_Element_Typ" />
+    </Key>
+    <Property Name="ID_Element_Typ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Typ" Type="char" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Magazyn_Kurierzy">
+    <Key>
+      <PropertyRef Name="ID_Kurier" />
+    </Key>
+    <Property Name="ID_Kurier" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="20" />
+    <Property Name="Telefon_1" Type="int" />
+    <Property Name="Telefon_2" Type="int" />
+    <Property Name="Email" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Magazyn_Miejsca">
+    <Key>
+      <PropertyRef Name="ID_Miejsca" />
+    </Key>
+    <Property Name="ID_Miejsca" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Magazyn_Oferta">
+    <Key>
+      <PropertyRef Name="ID_Oferta" />
+    </Key>
+    <Property Name="ID_Oferta" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ID_Element" Type="int" />
+    <Property Name="ID_Dostawcy" Type="char" MaxLength="10" />
+    <Property Name="Cena_Jedn" Type="money" />
+    <Property Name="Cena" Type="money" />
+    <Property Name="Data_Oferty" Type="char" MaxLength="10" />
+    <Property Name="Ilosc_Minimalna" Type="int" />
+    <Property Name="Ilosc_Maksymalna" Type="int" />
+    <Property Name="Ilosc_W_Opakowaniu_Zbiorczym" Type="int" />
+  </EntityType>
+  <EntityType Name="Magazyn_Polki">
+    <Key>
+      <PropertyRef Name="ID_Polka" />
+    </Key>
+    <Property Name="ID_Polka" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ID_Rozmiar_Polki" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Magazyn_Polki_Rozmiary">
+    <Key>
+      <PropertyRef Name="ID_Rozmiar_Polki" />
+    </Key>
+    <Property Name="ID_Rozmiar_Polki" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Wysokosc" Type="int" />
+    <Property Name="Szerokosc" Type="int" />
+    <Property Name="Glebokosc" Type="int" />
+  </EntityType>
+  <EntityType Name="Magazyn_Umowy_Kurierzy">
+    <Key>
+      <PropertyRef Name="ID_Umowy" />
+    </Key>
+    <Property Name="ID_Umowy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Kurier" Type="char" MaxLength="10" />
+    <Property Name="Data_Zawarcia" Type="date" />
+    <Property Name="Czas_Dostawy" Type="time" Precision="7" />
+    <Property Name="Koszt_Km" Type="int" />
+    <Property Name="Koszt_Staly" Type="int" />
+  </EntityType>
+  <EntityType Name="Magazyn_Zamowienia_Dostawy">
+    <Key>
+      <PropertyRef Name="ID_Dostawy" />
+    </Key>
+    <Property Name="ID_Dostawy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Zamowienia" Type="int" />
+    <Property Name="Data_Dostawy_Planowana" Type="char" MaxLength="10" />
+    <Property Name="Data_Dostawy_Rzeczywista" Type="char" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Baza_szwalnia.dbo.Magazyn_Zamowienia_Przydzial' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Magazyn_Zamowienia_Przydzial">
+          <Property Name="ID_Zamowienia" Type="int" />
+          <Property Name="ID_Pracownicy" Type="int" />
+          <Property Name="ID_Umowy" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Baza_szwalnia.dbo.Magazyn_Zawartosc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Magazyn_Zawartosc">
+          <Property Name="ID_Polka" Type="char" MaxLength="10" />
+          <Property Name="ID_Element" Type="int" />
+          <Property Name="ID_Dostawy" Type="int" />
+          <Property Name="Ilosc_Paczek" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Maszyny">
+    <Key>
+      <PropertyRef Name="ID_Maszyny" />
+    </Key>
+    <Property Name="ID_Maszyny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Model" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="ID_Rodzaj_Maszyny" Type="int" Nullable="false" />
+    <Property Name="Producent" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="Gwarancja_do" Type="smalldatetime" Nullable="false" />
+    <Property Name="Data_zakupu" Type="smalldatetime" Nullable="false" />
+    <Property Name="Resurs_rbh" Type="int" Nullable="false" />
+    <Property Name="Resurs_data_serwisu" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maszyny_Proces">
+    <Key>
+      <PropertyRef Name="ID_Proces_Technologiczny" />
+    </Key>
+    <Property Name="ID_Proces_Technologiczny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Rodzaj_Maszyny" Type="int" Nullable="false" />
+    <Property Name="Liczba" Type="int" Nullable="false" />
+    <Property Name="Liczba_Rbh" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Baza_szwalnia.dbo.Material_Na_Produkcji' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Material_Na_Produkcji">
+    <Key>
+      <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      <PropertyRef Name="ID_Element" />
+      <PropertyRef Name="Liczba" />
+      <PropertyRef Name="ID_Jednostka" />
+    </Key>
+    <Property Name="ID_Procesu_Produkcyjnego" Type="int" Nullable="false" />
+    <Property Name="ID_Element" Type="int" Nullable="false" />
+    <Property Name="Liczba" Type="float" Nullable="false" />
+    <Property Name="ID_Jednostka" Type="int" Nullable="false" />
+    <Property Name="Odpad" Type="float" />
+  </EntityType>
+  <EntityType Name="Obsluga_Techniczna">
+    <Key>
+      <PropertyRef Name="ID_Obslugi" />
+    </Key>
+    <Property Name="ID_Obslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Maszyny" Type="int" Nullable="false" />
+    <Property Name="ID_Rodzaj_Obslugi" Type="int" Nullable="false" />
+    <Property Name="Data_Wykonania" Type="smalldatetime" Nullable="false" />
+    <Property Name="ID_Pracownika" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pensja">
+    <Key>
+      <PropertyRef Name="ID_Pensja" />
+    </Key>
+    <Property Name="ID_Pensja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pensja" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pracownicy">
+    <Key>
+      <PropertyRef Name="ID_Pracownika" />
+    </Key>
+    <Property Name="ID_Pracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Nazwisko" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Pesel" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="Adres" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="Telefon" Type="char" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Baza_szwalnia.dbo.Pracownicy_Zatrudnienie' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Pracownicy_Zatrudnienie">
+    <Key>
+      <PropertyRef Name="Data_Zatrudnienia" />
+      <PropertyRef Name="Urlop" />
+    </Key>
+    <Property Name="ID_Pracownika" Type="int" />
+    <Property Name="ID_Stanowiska" Type="int" />
+    <Property Name="ID_Etatu" Type="int" />
+    <Property Name="ID_Rodzaju_Umowy" Type="int" />
+    <Property Name="Data_Zatrudnienia" Type="date" Nullable="false" />
+    <Property Name="Urlop" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proces_Produkcyjny">
+    <Key>
+      <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+    </Key>
+    <Property Name="ID_Procesu_Produkcyjnego" Type="int" Nullable="false" />
+    <Property Name="ID_Zamowienia" Type="int" Nullable="false" />
+    <Property Name="ID_Proces_Technologiczny" Type="int" Nullable="false" />
+    <Property Name="Data_Rozpoczecia" Type="smalldatetime" />
+    <Property Name="Data_Zakonczenia" Type="smalldatetime" />
+    <Property Name="ID_Dokumentacja_Proces" Type="int" />
+    <Property Name="Uwagi" Type="char" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Proces_Technologiczny">
+    <Key>
+      <PropertyRef Name="ID_Proces_Technologiczny" />
+    </Key>
+    <Property Name="ID_Proces_Technologiczny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Dokumentacja_Proces" Type="int" Nullable="false" />
+    <Property Name="ID_Pracownika" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proces_Zamowienie">
+    <Key>
+      <PropertyRef Name="ID_Proces_Technologiczny" />
+    </Key>
+    <Property Name="ID_Proces_Technologiczny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Zamowienia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produkty">
+    <Key>
+      <PropertyRef Name="ID_Produkty" />
+    </Key>
+    <Property Name="ID_Produkty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Baza_szwalnia.dbo.Przydzial_Zasobow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Przydzial_Zasobow">
+    <Key>
+      <PropertyRef Name="ID_Realizacji_Procesu" />
+      <PropertyRef Name="ID_Pracownika" />
+      <PropertyRef Name="ID_Maszyny" />
+    </Key>
+    <Property Name="ID_Realizacji_Procesu" Type="int" Nullable="false" />
+    <Property Name="ID_Pracownika" Type="int" Nullable="false" />
+    <Property Name="ID_Maszyny" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Realizacja_Procesu">
+    <Key>
+      <PropertyRef Name="ID_Realizacji_Procesu" />
+    </Key>
+    <Property Name="ID_Realizacji_Procesu" Type="int" Nullable="false" />
+    <Property Name="ID_Procesu_Produkcyjnego" Type="int" Nullable="false" />
+    <Property Name="ID_Etapu" Type="int" Nullable="false" />
+    <Property Name="Data_Rozpoczecia_Procesu" Type="smalldatetime" Nullable="false" />
+    <Property Name="Data_Zakonczenia_Procesu" Type="smalldatetime" />
+    <Property Name="Data_Kontroli" Type="smalldatetime" />
+    <Property Name="Uwagi_Kontroli" Type="char" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rodzaj_Dokumentacji">
+    <Key>
+      <PropertyRef Name="ID_Rodzaj" />
+    </Key>
+    <Property Name="ID_Rodzaj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rodzaj_Etapu">
+    <Key>
+      <PropertyRef Name="ID_Etapu" />
+    </Key>
+    <Property Name="ID_Etapu" Type="int" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rodzaj_Maszyny">
+    <Key>
+      <PropertyRef Name="ID_Rodzaj_Maszyny" />
+    </Key>
+    <Property Name="ID_Rodzaj_Maszyny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rodzaj_Maszyny" Type="char" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rodzaj_Obslugi">
+    <Key>
+      <PropertyRef Name="ID_Rodzaj_Obslugi" />
+    </Key>
+    <Property Name="ID_Rodzaj_Obslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="char" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rodzaj_Umowy">
+    <Key>
+      <PropertyRef Name="ID_Rodzaj_Umowy" />
+    </Key>
+    <Property Name="ID_Rodzaj_Umowy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rodzaj_Umowy" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="Uwagi" Type="char" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Stanowisko">
+    <Key>
+      <PropertyRef Name="ID_Stanowiska" />
+    </Key>
+    <Property Name="ID_Stanowiska" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Stanowisko" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Opis" Type="char" MaxLength="200" Nullable="false" />
+    <Property Name="ID_Pensji" Type="int" />
+  </EntityType>
+  <EntityType Name="Zamowienia">
+    <Key>
+      <PropertyRef Name="ID_Zamowienia" />
+    </Key>
+    <Property Name="ID_Zamowienia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Klienta" Type="int" />
+    <Property Name="Data_Zlozenia" Type="datetime" />
+    <Property Name="Data_Zakonczenia" Type="datetime" />
+    <Property Name="Dokumentacja" Type="bit" />
+    <Property Name="ID_Pracownika" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Baza_szwalnia.dbo.Zamowienia_Zawartosc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Zamowienia_Zawartosc">
+          <Property Name="ID_Zamowienia" Type="int" />
+          <Property Name="ID_Oferta" Type="char" MaxLength="10" />
+          <Property Name="Ilosc_Zamawiana" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Zamowienie_Produkt">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Zamowienia" Type="int" />
+    <Property Name="ID_Element" Type="int" />
+    <Property Name="Ilosc" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Baza_szwalnia.dbo.Zapotrzebowanie_Opakowan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Zapotrzebowanie_Opakowan">
+    <Key>
+      <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      <PropertyRef Name="ID_Element" />
+      <PropertyRef Name="Liczba" />
+    </Key>
+    <Property Name="ID_Procesu_Produkcyjnego" Type="int" Nullable="false" />
+    <Property Name="ID_Element" Type="int" Nullable="false" />
+    <Property Name="Liczba" Type="int" Nullable="false" />
+    <Property Name="Czy_Otrzymano" Type="bit" />
+    <Property Name="Uwagi" Type="char" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Znajomosc_Jezykow">
+    <Key>
+      <PropertyRef Name="ID_Znajomosc_Jezykow" />
+    </Key>
+    <Property Name="ID_Znajomosc_Jezykow" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Jezyka" Type="int" />
+    <Property Name="ID_Pracownika" Type="int" />
+  </EntityType>
+  <Association Name="FK__Czesci_Ob__ID_El__17F790F9">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="1" />
+    <End Role="Czesci_Obsluga" Type="Self.Czesci_Obsluga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Czesci_Obsluga">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dokumenta__ID_Do__2DE6D218">
+    <End Role="Dokumentacje" Type="Self.Dokumentacje" Multiplicity="1" />
+    <End Role="Dokumentacja_Proces" Type="Self.Dokumentacja_Proces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dokumentacje">
+        <PropertyRef Name="ID_Dokumentacji" />
+      </Principal>
+      <Dependent Role="Dokumentacja_Proces">
+        <PropertyRef Name="ID_Dokumentacji" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dokumenta__ID_Pr__2B0A656D">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Dokumentacje" Type="Self.Dokumentacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Dokumentacje">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dokumenta__ID_Ro__2A164134">
+    <End Role="Rodzaj_Dokumentacji" Type="Self.Rodzaj_Dokumentacji" Multiplicity="1" />
+    <End Role="Dokumentacje" Type="Self.Dokumentacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Dokumentacji">
+        <PropertyRef Name="ID_Rodzaj" />
+      </Principal>
+      <Dependent Role="Dokumentacje">
+        <PropertyRef Name="ID_Rodzaj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Dostawy_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Dostawy_Z__ID_Do__02084FDA" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Dostawy_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Dostawy_Z__ID_El__02FC7413" />-->
+  <Association Name="FK__Elementy___ID_El__37703C52">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="1" />
+    <End Role="Elementy_Proces" Type="Self.Elementy_Proces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Elementy_Proces">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Etapy_W_P__ID_Et__3A4CA8FD">
+    <End Role="Rodzaj_Etapu" Type="Self.Rodzaj_Etapu" Multiplicity="1" />
+    <End Role="Etapy_W_Procesie" Type="Self.Etapy_W_Procesie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Etapu">
+        <PropertyRef Name="ID_Etapu" />
+      </Principal>
+      <Dependent Role="Etapy_W_Procesie">
+        <PropertyRef Name="ID_Etapu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Faktury__ID_Klie__4D94879B">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+    <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="ID_Klienta" />
+      </Principal>
+      <Dependent Role="Faktury">
+        <PropertyRef Name="ID_Klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Faktury__ID_Zamo__4CA06362">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="0..1" />
+    <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Principal>
+      <Dependent Role="Faktury">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Faktury_Z__ID_Gr__5441852A">
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
+    <End Role="Faktury_Zewnetrzne" Type="Self.Faktury_Zewnetrzne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupa">
+        <PropertyRef Name="ID_Grupa" />
+      </Principal>
+      <Dependent Role="Faktury_Zewnetrzne">
+        <PropertyRef Name="ID_Grupa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Kontrola___ID_Pr__55009F39">
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="1" />
+    <End Role="Kontrola_Efektywnosci" Type="Self.Kontrola_Efektywnosci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Principal>
+      <Dependent Role="Kontrola_Efektywnosci">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Koszt_Jed__ID_El__114A936A">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="0..1" />
+    <End Role="Koszt_Jednostkowy" Type="Self.Koszt_Jednostkowy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Koszt_Jednostkowy">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_D__ID_Do__09A971A2">
+    <End Role="Magazyn_Zamowienia_Dostawy" Type="Self.Magazyn_Zamowienia_Dostawy" Multiplicity="0..1" />
+    <End Role="Magazyn_Dostarczenia_Wewn" Type="Self.Magazyn_Dostarczenia_Wewn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Zamowienia_Dostawy">
+        <PropertyRef Name="ID_Dostawy" />
+      </Principal>
+      <Dependent Role="Magazyn_Dostarczenia_Wewn">
+        <PropertyRef Name="ID_Dostawy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_D__ID_Mi__0A9D95DB">
+    <End Role="Magazyn_Miejsca" Type="Self.Magazyn_Miejsca" Multiplicity="0..1" />
+    <End Role="Magazyn_Dostarczenia_Wewn" Type="Self.Magazyn_Dostarczenia_Wewn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Miejsca">
+        <PropertyRef Name="ID_Miejsca" />
+      </Principal>
+      <Dependent Role="Magazyn_Dostarczenia_Wewn">
+        <PropertyRef Name="ID_Miejsca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_D__ID_Mi__0F624AF8">
+    <End Role="Magazyn_Miejsca" Type="Self.Magazyn_Miejsca" Multiplicity="0..1" />
+    <End Role="Magazyn_Dostarczenia_Zewn" Type="Self.Magazyn_Dostarczenia_Zewn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Miejsca">
+        <PropertyRef Name="ID_Miejsca" />
+      </Principal>
+      <Dependent Role="Magazyn_Dostarczenia_Zewn">
+        <PropertyRef Name="ID_Miejsca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Dostawcy_Oferta' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_D__ID_Of__7F2BE32F" />-->
+  <Association Name="FK__Magazyn_D__ID_Pr__08B54D69">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+    <End Role="Magazyn_Dostarczenia_Wewn" Type="Self.Magazyn_Dostarczenia_Wewn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Magazyn_Dostarczenia_Wewn">
+        <PropertyRef Name="ID_Pracownicy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_D__ID_Pr__0D7A0286">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+    <End Role="Magazyn_Dostarczenia_Zewn" Type="Self.Magazyn_Dostarczenia_Zewn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Magazyn_Dostarczenia_Zewn">
+        <PropertyRef Name="ID_Pracownicy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Dostawcy_Oferta' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_D__ID_Za__00200768" />-->
+  <Association Name="FK__Magazyn_D__ID_Za__0E6E26BF">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="0..1" />
+    <End Role="Magazyn_Dostarczenia_Zewn" Type="Self.Magazyn_Dostarczenia_Zewn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Principal>
+      <Dependent Role="Magazyn_Dostarczenia_Zewn">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Elementy_Cechy' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_E__ID_Ce__6B24EA82" />-->
+  <Association Name="FK__Magazyn_E__ID_El__6754599E">
+    <End Role="Magazyn_Elementy_Typy" Type="Self.Magazyn_Elementy_Typy" Multiplicity="0..1" />
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy_Typy">
+        <PropertyRef Name="ID_Element_Typ" />
+      </Principal>
+      <Dependent Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element_Typ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Elementy_Cechy' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_E__ID_El__6A30C649" />-->
+  <Association Name="FK__Magazyn_E__ID_Je__68487DD7">
+    <End Role="Magazyn_Elementy_Jednostki" Type="Self.Magazyn_Elementy_Jednostki" Multiplicity="0..1" />
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy_Jednostki">
+        <PropertyRef Name="ID_jednostka" />
+      </Principal>
+      <Dependent Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Jednostka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_O__ID_Do__71D1E811">
+    <End Role="Magazyn_Dostawcy_Zaopatrzenie" Type="Self.Magazyn_Dostawcy_Zaopatrzenie" Multiplicity="0..1" />
+    <End Role="Magazyn_Oferta" Type="Self.Magazyn_Oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Dostawcy_Zaopatrzenie">
+        <PropertyRef Name="ID_Dostawcy" />
+      </Principal>
+      <Dependent Role="Magazyn_Oferta">
+        <PropertyRef Name="ID_Dostawcy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_O__ID_El__70DDC3D8">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="0..1" />
+    <End Role="Magazyn_Oferta" Type="Self.Magazyn_Oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Magazyn_Oferta">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_P__ID_Ro__5EBF139D">
+    <End Role="Magazyn_Polki_Rozmiary" Type="Self.Magazyn_Polki_Rozmiary" Multiplicity="0..1" />
+    <End Role="Magazyn_Polki" Type="Self.Magazyn_Polki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Polki_Rozmiary">
+        <PropertyRef Name="ID_Rozmiar_Polki" />
+      </Principal>
+      <Dependent Role="Magazyn_Polki">
+        <PropertyRef Name="ID_Rozmiar_Polki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Magazyn_U__ID_Ku__6E01572D">
+    <End Role="Magazyn_Kurierzy" Type="Self.Magazyn_Kurierzy" Multiplicity="0..1" />
+    <End Role="Magazyn_Umowy_Kurierzy" Type="Self.Magazyn_Umowy_Kurierzy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Kurierzy">
+        <PropertyRef Name="ID_Kurier" />
+      </Principal>
+      <Dependent Role="Magazyn_Umowy_Kurierzy">
+        <PropertyRef Name="ID_Kurier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_Z__ID_Do__7D439ABD" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_Z__ID_El__7C4F7684" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_Z__ID_Po__7B5B524B" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Zamowienia_Przydzial' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_Z__ID_Pr__74AE54BC" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Zamowienia_Przydzial' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_Z__ID_Um__75A278F5" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Magazyn_Zamowienia_Przydzial' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Magazyn_Z__ID_Za__73BA3083" />-->
+  <Association Name="FK__Magazyn_Z__ID_Za__787EE5A0">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="0..1" />
+    <End Role="Magazyn_Zamowienia_Dostawy" Type="Self.Magazyn_Zamowienia_Dostawy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Principal>
+      <Dependent Role="Magazyn_Zamowienia_Dostawy">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Maszyny__ID_Rodz__208CD6FA">
+    <End Role="Rodzaj_Maszyny" Type="Self.Rodzaj_Maszyny" Multiplicity="1" />
+    <End Role="Maszyny" Type="Self.Maszyny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Maszyny">
+        <PropertyRef Name="ID_Rodzaj_Maszyny" />
+      </Principal>
+      <Dependent Role="Maszyny">
+        <PropertyRef Name="ID_Rodzaj_Maszyny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material___ID_El__47A6A41B">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="1" />
+    <End Role="Material_Na_Produkcji" Type="Self.Material_Na_Produkcji" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Material_Na_Produkcji">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material___ID_Je__489AC854">
+    <End Role="Magazyn_Elementy_Jednostki" Type="Self.Magazyn_Elementy_Jednostki" Multiplicity="1" />
+    <End Role="Material_Na_Produkcji" Type="Self.Material_Na_Produkcji" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy_Jednostki">
+        <PropertyRef Name="ID_jednostka" />
+      </Principal>
+      <Dependent Role="Material_Na_Produkcji">
+        <PropertyRef Name="ID_Jednostka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material___ID_Pr__46B27FE2">
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="1" />
+    <End Role="Material_Na_Produkcji" Type="Self.Material_Na_Produkcji" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Principal>
+      <Dependent Role="Material_Na_Produkcji">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Obsluga_T__ID_Ma__236943A5">
+    <End Role="Maszyny" Type="Self.Maszyny" Multiplicity="1" />
+    <End Role="Obsluga_Techniczna" Type="Self.Obsluga_Techniczna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maszyny">
+        <PropertyRef Name="ID_Maszyny" />
+      </Principal>
+      <Dependent Role="Obsluga_Techniczna">
+        <PropertyRef Name="ID_Maszyny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Obsluga_T__ID_Pr__25518C17">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Obsluga_Techniczna" Type="Self.Obsluga_Techniczna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Obsluga_Techniczna">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Obsluga_T__ID_Ro__245D67DE">
+    <End Role="Rodzaj_Obslugi" Type="Self.Rodzaj_Obslugi" Multiplicity="1" />
+    <End Role="Obsluga_Techniczna" Type="Self.Obsluga_Techniczna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Obslugi">
+        <PropertyRef Name="ID_Rodzaj_Obslugi" />
+      </Principal>
+      <Dependent Role="Obsluga_Techniczna">
+        <PropertyRef Name="ID_Rodzaj_Obslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownic__ID_Et__3B75D760">
+    <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
+    <End Role="Pracownicy_Zatrudnienie" Type="Self.Pracownicy_Zatrudnienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etat">
+        <PropertyRef Name="ID_Etat" />
+      </Principal>
+      <Dependent Role="Pracownicy_Zatrudnienie">
+        <PropertyRef Name="ID_Etatu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownic__ID_Pr__398D8EEE">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+    <End Role="Pracownicy_Zatrudnienie" Type="Self.Pracownicy_Zatrudnienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Pracownicy_Zatrudnienie">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownic__ID_Ro__3C69FB99">
+    <End Role="Rodzaj_Umowy" Type="Self.Rodzaj_Umowy" Multiplicity="0..1" />
+    <End Role="Pracownicy_Zatrudnienie" Type="Self.Pracownicy_Zatrudnienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Umowy">
+        <PropertyRef Name="ID_Rodzaj_Umowy" />
+      </Principal>
+      <Dependent Role="Pracownicy_Zatrudnienie">
+        <PropertyRef Name="ID_Rodzaju_Umowy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownic__ID_St__3A81B327">
+    <End Role="Stanowisko" Type="Self.Stanowisko" Multiplicity="0..1" />
+    <End Role="Pracownicy_Zatrudnienie" Type="Self.Pracownicy_Zatrudnienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stanowisko">
+        <PropertyRef Name="ID_Stanowiska" />
+      </Principal>
+      <Dependent Role="Pracownicy_Zatrudnienie">
+        <PropertyRef Name="ID_Stanowiska" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proces_Pr__ID_Do__44CA3770">
+    <End Role="Dokumentacja_Proces" Type="Self.Dokumentacja_Proces" Multiplicity="0..1" />
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dokumentacja_Proces">
+        <PropertyRef Name="ID_Dokumentacja_Proces" />
+      </Principal>
+      <Dependent Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Dokumentacja_Proces" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proces_Pr__ID_Pr__43D61337">
+    <End Role="Proces_Technologiczny" Type="Self.Proces_Technologiczny" Multiplicity="1" />
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Technologiczny">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Principal>
+      <Dependent Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proces_Pr__ID_Za__42E1EEFE">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="1" />
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Principal>
+      <Dependent Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proces_Te__ID_Do__339FAB6E">
+    <End Role="Dokumentacja_Proces" Type="Self.Dokumentacja_Proces" Multiplicity="1" />
+    <End Role="Proces_Technologiczny" Type="Self.Proces_Technologiczny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dokumentacja_Proces">
+        <PropertyRef Name="ID_Dokumentacja_Proces" />
+      </Principal>
+      <Dependent Role="Proces_Technologiczny">
+        <PropertyRef Name="ID_Dokumentacja_Proces" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proces_Te__ID_Pr__3493CFA7">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Proces_Technologiczny" Type="Self.Proces_Technologiczny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Proces_Technologiczny">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proces_Za__ID_Za__30C33EC3">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="1" />
+    <End Role="Proces_Zamowienie" Type="Self.Proces_Zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Principal>
+      <Dependent Role="Proces_Zamowienie">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Przydzial__ID_Ma__503BEA1C">
+    <End Role="Maszyny" Type="Self.Maszyny" Multiplicity="1" />
+    <End Role="Przydzial_Zasobow" Type="Self.Przydzial_Zasobow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maszyny">
+        <PropertyRef Name="ID_Maszyny" />
+      </Principal>
+      <Dependent Role="Przydzial_Zasobow">
+        <PropertyRef Name="ID_Maszyny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Przydzial__ID_Pr__4F47C5E3">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Przydzial_Zasobow" Type="Self.Przydzial_Zasobow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Przydzial_Zasobow">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Przydzial__ID_Re__4E53A1AA">
+    <End Role="Realizacja_Procesu" Type="Self.Realizacja_Procesu" Multiplicity="1" />
+    <End Role="Przydzial_Zasobow" Type="Self.Przydzial_Zasobow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Realizacja_Procesu">
+        <PropertyRef Name="ID_Realizacji_Procesu" />
+      </Principal>
+      <Dependent Role="Przydzial_Zasobow">
+        <PropertyRef Name="ID_Realizacji_Procesu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Realizacj__ID_Et__4C6B5938">
+    <End Role="Rodzaj_Etapu" Type="Self.Rodzaj_Etapu" Multiplicity="1" />
+    <End Role="Realizacja_Procesu" Type="Self.Realizacja_Procesu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Etapu">
+        <PropertyRef Name="ID_Etapu" />
+      </Principal>
+      <Dependent Role="Realizacja_Procesu">
+        <PropertyRef Name="ID_Etapu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Realizacj__ID_Pr__4B7734FF">
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="1" />
+    <End Role="Realizacja_Procesu" Type="Self.Realizacja_Procesu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Principal>
+      <Dependent Role="Realizacja_Procesu">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stanowisk__ID_Pe__2E1BDC42">
+    <End Role="Pensja" Type="Self.Pensja" Multiplicity="0..1" />
+    <End Role="Stanowisko" Type="Self.Stanowisko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pensja">
+        <PropertyRef Name="ID_Pensja" />
+      </Principal>
+      <Dependent Role="Stanowisko">
+        <PropertyRef Name="ID_Pensji" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Zamowieni__ID_El__151B244E">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="0..1" />
+    <End Role="Zamowienie_Produkt" Type="Self.Zamowienie_Produkt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Zamowienie_Produkt">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Zamowieni__ID_Kl__48CFD27E">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="ID_Klienta" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="ID_Klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Zamowienia_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Zamowieni__ID_Of__05D8E0BE" />-->
+  <Association Name="FK__Zamowieni__ID_Pr__49C3F6B7">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Baza_szwalnia.dbo.Zamowienia_Zawartosc' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Zamowieni__ID_Za__04E4BC85" />-->
+  <Association Name="FK__Zamowieni__ID_Za__14270015">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="0..1" />
+    <End Role="Zamowienie_Produkt" Type="Self.Zamowienie_Produkt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Principal>
+      <Dependent Role="Zamowienie_Produkt">
+        <PropertyRef Name="ID_Zamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Zapotrzeb__ID_El__531856C7">
+    <End Role="Magazyn_Elementy" Type="Self.Magazyn_Elementy" Multiplicity="1" />
+    <End Role="Zapotrzebowanie_Opakowan" Type="Self.Zapotrzebowanie_Opakowan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazyn_Elementy">
+        <PropertyRef Name="ID_Element" />
+      </Principal>
+      <Dependent Role="Zapotrzebowanie_Opakowan">
+        <PropertyRef Name="ID_Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Zapotrzeb__ID_Pr__5224328E">
+    <End Role="Proces_Produkcyjny" Type="Self.Proces_Produkcyjny" Multiplicity="1" />
+    <End Role="Zapotrzebowanie_Opakowan" Type="Self.Zapotrzebowanie_Opakowan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Produkcyjny">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Principal>
+      <Dependent Role="Zapotrzebowanie_Opakowan">
+        <PropertyRef Name="ID_Procesu_Produkcyjnego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Znajomosc__ID_Je__4316F928">
+    <End Role="Jezyk" Type="Self.Jezyk" Multiplicity="0..1" />
+    <End Role="Znajomosc_Jezykow" Type="Self.Znajomosc_Jezykow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jezyk">
+        <PropertyRef Name="ID_Jezyk" />
+      </Principal>
+      <Dependent Role="Znajomosc_Jezykow">
+        <PropertyRef Name="ID_Jezyka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Znajomosc__ID_Pr__440B1D61">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+    <End Role="Znajomosc_Jezykow" Type="Self.Znajomosc_Jezykow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID_Pracownika" />
+      </Principal>
+      <Dependent Role="Znajomosc_Jezykow">
+        <PropertyRef Name="ID_Pracownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Obslugi">
+    <End Role="Obsluga_Techniczna" Type="Self.Obsluga_Techniczna" Multiplicity="1" />
+    <End Role="Czesci_Obsluga" Type="Self.Czesci_Obsluga" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Obsluga_Techniczna">
+        <PropertyRef Name="ID_Obslugi" />
+      </Principal>
+      <Dependent Role="Czesci_Obsluga">
+        <PropertyRef Name="ID_Obslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Proces_Technologiczny">
+    <End Role="Proces_Technologiczny" Type="Self.Proces_Technologiczny" Multiplicity="1" />
+    <End Role="Maszyny_Proces" Type="Self.Maszyny_Proces" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Technologiczny">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Principal>
+      <Dependent Role="Maszyny_Proces">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Proces_Technologiczny_2">
+    <End Role="Proces_Technologiczny" Type="Self.Proces_Technologiczny" Multiplicity="1" />
+    <End Role="Etapy_W_Procesie" Type="Self.Etapy_W_Procesie" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Technologiczny">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Principal>
+      <Dependent Role="Etapy_W_Procesie">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Proces_Technologiczny_3">
+    <End Role="Proces_Zamowienie" Type="Self.Proces_Zamowienie" Multiplicity="1" />
+    <End Role="Elementy_Proces" Type="Self.Elementy_Proces" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Zamowienie">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Principal>
+      <Dependent Role="Elementy_Proces">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Proces_Technologiczny_4">
+    <End Role="Proces_Technologiczny" Type="Self.Proces_Technologiczny" Multiplicity="1" />
+    <End Role="Proces_Zamowienie" Type="Self.Proces_Zamowienie" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proces_Technologiczny">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Principal>
+      <Dependent Role="Proces_Zamowienie">
+        <PropertyRef Name="ID_Proces_Technologiczny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Rodzaj_Maszyny">
+    <End Role="Rodzaj_Maszyny" Type="Self.Rodzaj_Maszyny" Multiplicity="1" />
+    <End Role="Maszyny_Proces" Type="Self.Maszyny_Proces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rodzaj_Maszyny">
+        <PropertyRef Name="ID_Rodzaj_Maszyny" />
+      </Principal>
+      <Dependent Role="Maszyny_Proces">
+        <PropertyRef Name="ID_Rodzaj_Maszyny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Baza_szwalniaModelStoreContainer">
+    <EntitySet Name="Czesci_Obsluga" EntityType="Self.Czesci_Obsluga" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dokumentacja_Proces" EntityType="Self.Dokumentacja_Proces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dokumentacje" EntityType="Self.Dokumentacje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Elementy_Proces" EntityType="Self.Elementy_Proces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Etapy_W_Procesie" EntityType="Self.Etapy_W_Procesie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Etat" EntityType="Self.Etat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faktury" EntityType="Self.Faktury" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faktury_Zewnetrzne" EntityType="Self.Faktury_Zewnetrzne" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grupa" EntityType="Self.Grupa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jezyk" EntityType="Self.Jezyk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Dostarczenia_Wewn" EntityType="Self.Magazyn_Dostarczenia_Wewn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Dostarczenia_Zewn" EntityType="Self.Magazyn_Dostarczenia_Zewn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Dostawcy_Zaopatrzenie" EntityType="Self.Magazyn_Dostawcy_Zaopatrzenie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Elementy" EntityType="Self.Magazyn_Elementy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Elementy_Cechy_Slownik" EntityType="Self.Magazyn_Elementy_Cechy_Slownik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Elementy_Jednostki" EntityType="Self.Magazyn_Elementy_Jednostki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Elementy_Typy" EntityType="Self.Magazyn_Elementy_Typy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Kurierzy" EntityType="Self.Magazyn_Kurierzy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Miejsca" EntityType="Self.Magazyn_Miejsca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Oferta" EntityType="Self.Magazyn_Oferta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Polki" EntityType="Self.Magazyn_Polki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Polki_Rozmiary" EntityType="Self.Magazyn_Polki_Rozmiary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Umowy_Kurierzy" EntityType="Self.Magazyn_Umowy_Kurierzy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazyn_Zamowienia_Dostawy" EntityType="Self.Magazyn_Zamowienia_Dostawy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maszyny" EntityType="Self.Maszyny" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maszyny_Proces" EntityType="Self.Maszyny_Proces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Obsluga_Techniczna" EntityType="Self.Obsluga_Techniczna" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pensja" EntityType="Self.Pensja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proces_Produkcyjny" EntityType="Self.Proces_Produkcyjny" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proces_Technologiczny" EntityType="Self.Proces_Technologiczny" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proces_Zamowienie" EntityType="Self.Proces_Zamowienie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Realizacja_Procesu" EntityType="Self.Realizacja_Procesu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rodzaj_Dokumentacji" EntityType="Self.Rodzaj_Dokumentacji" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rodzaj_Etapu" EntityType="Self.Rodzaj_Etapu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rodzaj_Maszyny" EntityType="Self.Rodzaj_Maszyny" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rodzaj_Obslugi" EntityType="Self.Rodzaj_Obslugi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rodzaj_Umowy" EntityType="Self.Rodzaj_Umowy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stanowisko" EntityType="Self.Stanowisko" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zamowienia" EntityType="Self.Zamowienia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zamowienie_Produkt" EntityType="Self.Zamowienie_Produkt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Znajomosc_Jezykow" EntityType="Self.Znajomosc_Jezykow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kontrola_Efektywnosci" EntityType="Self.Kontrola_Efektywnosci" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Kontrola_Efektywnosci].[ID_Procesu_Produkcyjnego] AS [ID_Procesu_Produkcyjnego], 
+    [Kontrola_Efektywnosci].[Data_Kontroli] AS [Data_Kontroli], 
+    [Kontrola_Efektywnosci].[Dokument] AS [Dokument], 
+    [Kontrola_Efektywnosci].[Uwagi] AS [Uwagi], 
+    [Kontrola_Efektywnosci].[Zgodnosc_Zamowienia] AS [Zgodnosc_Zamowienia], 
+    [Kontrola_Efektywnosci].[Liczba_Poprawnych] AS [Liczba_Poprawnych], 
+    [Kontrola_Efektywnosci].[Liczba_Blednych] AS [Liczba_Blednych]
+    FROM [dbo].[Kontrola_Efektywnosci] AS [Kontrola_Efektywnosci]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Koszt_Jednostkowy" EntityType="Self.Koszt_Jednostkowy" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Koszt_Jednostkowy].[ID_Element] AS [ID_Element], 
+    [Koszt_Jednostkowy].[Koszt_Produkcji] AS [Koszt_Produkcji]
+    FROM [dbo].[Koszt_Jednostkowy] AS [Koszt_Jednostkowy]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Material_Na_Produkcji" EntityType="Self.Material_Na_Produkcji" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Material_Na_Produkcji].[ID_Procesu_Produkcyjnego] AS [ID_Procesu_Produkcyjnego], 
+    [Material_Na_Produkcji].[ID_Element] AS [ID_Element], 
+    [Material_Na_Produkcji].[Liczba] AS [Liczba], 
+    [Material_Na_Produkcji].[ID_Jednostka] AS [ID_Jednostka], 
+    [Material_Na_Produkcji].[Odpad] AS [Odpad]
+    FROM [dbo].[Material_Na_Produkcji] AS [Material_Na_Produkcji]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Pracownicy_Zatrudnienie" EntityType="Self.Pracownicy_Zatrudnienie" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Pracownicy_Zatrudnienie].[ID_Pracownika] AS [ID_Pracownika], 
+    [Pracownicy_Zatrudnienie].[ID_Stanowiska] AS [ID_Stanowiska], 
+    [Pracownicy_Zatrudnienie].[ID_Etatu] AS [ID_Etatu], 
+    [Pracownicy_Zatrudnienie].[ID_Rodzaju_Umowy] AS [ID_Rodzaju_Umowy], 
+    [Pracownicy_Zatrudnienie].[Data_Zatrudnienia] AS [Data_Zatrudnienia], 
+    [Pracownicy_Zatrudnienie].[Urlop] AS [Urlop]
+    FROM [dbo].[Pracownicy_Zatrudnienie] AS [Pracownicy_Zatrudnienie]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Przydzial_Zasobow" EntityType="Self.Przydzial_Zasobow" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Przydzial_Zasobow].[ID_Realizacji_Procesu] AS [ID_Realizacji_Procesu], 
+    [Przydzial_Zasobow].[ID_Pracownika] AS [ID_Pracownika], 
+    [Przydzial_Zasobow].[ID_Maszyny] AS [ID_Maszyny]
+    FROM [dbo].[Przydzial_Zasobow] AS [Przydzial_Zasobow]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Zapotrzebowanie_Opakowan" EntityType="Self.Zapotrzebowanie_Opakowan" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Zapotrzebowanie_Opakowan].[ID_Procesu_Produkcyjnego] AS [ID_Procesu_Produkcyjnego], 
+    [Zapotrzebowanie_Opakowan].[ID_Element] AS [ID_Element], 
+    [Zapotrzebowanie_Opakowan].[Liczba] AS [Liczba], 
+    [Zapotrzebowanie_Opakowan].[Czy_Otrzymano] AS [Czy_Otrzymano], 
+    [Zapotrzebowanie_Opakowan].[Uwagi] AS [Uwagi]
+    FROM [dbo].[Zapotrzebowanie_Opakowan] AS [Zapotrzebowanie_Opakowan]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Czesci_Ob__ID_El__17F790F9" Association="Self.FK__Czesci_Ob__ID_El__17F790F9">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Czesci_Obsluga" EntitySet="Czesci_Obsluga" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dokumenta__ID_Do__2DE6D218" Association="Self.FK__Dokumenta__ID_Do__2DE6D218">
+      <End Role="Dokumentacje" EntitySet="Dokumentacje" />
+      <End Role="Dokumentacja_Proces" EntitySet="Dokumentacja_Proces" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dokumenta__ID_Pr__2B0A656D" Association="Self.FK__Dokumenta__ID_Pr__2B0A656D">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Dokumentacje" EntitySet="Dokumentacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dokumenta__ID_Ro__2A164134" Association="Self.FK__Dokumenta__ID_Ro__2A164134">
+      <End Role="Rodzaj_Dokumentacji" EntitySet="Rodzaj_Dokumentacji" />
+      <End Role="Dokumentacje" EntitySet="Dokumentacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Elementy___ID_El__37703C52" Association="Self.FK__Elementy___ID_El__37703C52">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Elementy_Proces" EntitySet="Elementy_Proces" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Etapy_W_P__ID_Et__3A4CA8FD" Association="Self.FK__Etapy_W_P__ID_Et__3A4CA8FD">
+      <End Role="Rodzaj_Etapu" EntitySet="Rodzaj_Etapu" />
+      <End Role="Etapy_W_Procesie" EntitySet="Etapy_W_Procesie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Faktury__ID_Klie__4D94879B" Association="Self.FK__Faktury__ID_Klie__4D94879B">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Faktury" EntitySet="Faktury" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Faktury__ID_Zamo__4CA06362" Association="Self.FK__Faktury__ID_Zamo__4CA06362">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="Faktury" EntitySet="Faktury" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Faktury_Z__ID_Gr__5441852A" Association="Self.FK__Faktury_Z__ID_Gr__5441852A">
+      <End Role="Grupa" EntitySet="Grupa" />
+      <End Role="Faktury_Zewnetrzne" EntitySet="Faktury_Zewnetrzne" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Kontrola___ID_Pr__55009F39" Association="Self.FK__Kontrola___ID_Pr__55009F39">
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+      <End Role="Kontrola_Efektywnosci" EntitySet="Kontrola_Efektywnosci" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Koszt_Jed__ID_El__114A936A" Association="Self.FK__Koszt_Jed__ID_El__114A936A">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Koszt_Jednostkowy" EntitySet="Koszt_Jednostkowy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_D__ID_Do__09A971A2" Association="Self.FK__Magazyn_D__ID_Do__09A971A2">
+      <End Role="Magazyn_Zamowienia_Dostawy" EntitySet="Magazyn_Zamowienia_Dostawy" />
+      <End Role="Magazyn_Dostarczenia_Wewn" EntitySet="Magazyn_Dostarczenia_Wewn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_D__ID_Mi__0A9D95DB" Association="Self.FK__Magazyn_D__ID_Mi__0A9D95DB">
+      <End Role="Magazyn_Miejsca" EntitySet="Magazyn_Miejsca" />
+      <End Role="Magazyn_Dostarczenia_Wewn" EntitySet="Magazyn_Dostarczenia_Wewn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_D__ID_Mi__0F624AF8" Association="Self.FK__Magazyn_D__ID_Mi__0F624AF8">
+      <End Role="Magazyn_Miejsca" EntitySet="Magazyn_Miejsca" />
+      <End Role="Magazyn_Dostarczenia_Zewn" EntitySet="Magazyn_Dostarczenia_Zewn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_D__ID_Pr__08B54D69" Association="Self.FK__Magazyn_D__ID_Pr__08B54D69">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Magazyn_Dostarczenia_Wewn" EntitySet="Magazyn_Dostarczenia_Wewn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_D__ID_Pr__0D7A0286" Association="Self.FK__Magazyn_D__ID_Pr__0D7A0286">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Magazyn_Dostarczenia_Zewn" EntitySet="Magazyn_Dostarczenia_Zewn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_D__ID_Za__0E6E26BF" Association="Self.FK__Magazyn_D__ID_Za__0E6E26BF">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="Magazyn_Dostarczenia_Zewn" EntitySet="Magazyn_Dostarczenia_Zewn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_E__ID_El__6754599E" Association="Self.FK__Magazyn_E__ID_El__6754599E">
+      <End Role="Magazyn_Elementy_Typy" EntitySet="Magazyn_Elementy_Typy" />
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_E__ID_Je__68487DD7" Association="Self.FK__Magazyn_E__ID_Je__68487DD7">
+      <End Role="Magazyn_Elementy_Jednostki" EntitySet="Magazyn_Elementy_Jednostki" />
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_O__ID_Do__71D1E811" Association="Self.FK__Magazyn_O__ID_Do__71D1E811">
+      <End Role="Magazyn_Dostawcy_Zaopatrzenie" EntitySet="Magazyn_Dostawcy_Zaopatrzenie" />
+      <End Role="Magazyn_Oferta" EntitySet="Magazyn_Oferta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_O__ID_El__70DDC3D8" Association="Self.FK__Magazyn_O__ID_El__70DDC3D8">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Magazyn_Oferta" EntitySet="Magazyn_Oferta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_P__ID_Ro__5EBF139D" Association="Self.FK__Magazyn_P__ID_Ro__5EBF139D">
+      <End Role="Magazyn_Polki_Rozmiary" EntitySet="Magazyn_Polki_Rozmiary" />
+      <End Role="Magazyn_Polki" EntitySet="Magazyn_Polki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_U__ID_Ku__6E01572D" Association="Self.FK__Magazyn_U__ID_Ku__6E01572D">
+      <End Role="Magazyn_Kurierzy" EntitySet="Magazyn_Kurierzy" />
+      <End Role="Magazyn_Umowy_Kurierzy" EntitySet="Magazyn_Umowy_Kurierzy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Magazyn_Z__ID_Za__787EE5A0" Association="Self.FK__Magazyn_Z__ID_Za__787EE5A0">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="Magazyn_Zamowienia_Dostawy" EntitySet="Magazyn_Zamowienia_Dostawy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Maszyny__ID_Rodz__208CD6FA" Association="Self.FK__Maszyny__ID_Rodz__208CD6FA">
+      <End Role="Rodzaj_Maszyny" EntitySet="Rodzaj_Maszyny" />
+      <End Role="Maszyny" EntitySet="Maszyny" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material___ID_El__47A6A41B" Association="Self.FK__Material___ID_El__47A6A41B">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Material_Na_Produkcji" EntitySet="Material_Na_Produkcji" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material___ID_Je__489AC854" Association="Self.FK__Material___ID_Je__489AC854">
+      <End Role="Magazyn_Elementy_Jednostki" EntitySet="Magazyn_Elementy_Jednostki" />
+      <End Role="Material_Na_Produkcji" EntitySet="Material_Na_Produkcji" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material___ID_Pr__46B27FE2" Association="Self.FK__Material___ID_Pr__46B27FE2">
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+      <End Role="Material_Na_Produkcji" EntitySet="Material_Na_Produkcji" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Obsluga_T__ID_Ma__236943A5" Association="Self.FK__Obsluga_T__ID_Ma__236943A5">
+      <End Role="Maszyny" EntitySet="Maszyny" />
+      <End Role="Obsluga_Techniczna" EntitySet="Obsluga_Techniczna" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Obsluga_T__ID_Pr__25518C17" Association="Self.FK__Obsluga_T__ID_Pr__25518C17">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Obsluga_Techniczna" EntitySet="Obsluga_Techniczna" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Obsluga_T__ID_Ro__245D67DE" Association="Self.FK__Obsluga_T__ID_Ro__245D67DE">
+      <End Role="Rodzaj_Obslugi" EntitySet="Rodzaj_Obslugi" />
+      <End Role="Obsluga_Techniczna" EntitySet="Obsluga_Techniczna" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownic__ID_Et__3B75D760" Association="Self.FK__Pracownic__ID_Et__3B75D760">
+      <End Role="Etat" EntitySet="Etat" />
+      <End Role="Pracownicy_Zatrudnienie" EntitySet="Pracownicy_Zatrudnienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownic__ID_Pr__398D8EEE" Association="Self.FK__Pracownic__ID_Pr__398D8EEE">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Pracownicy_Zatrudnienie" EntitySet="Pracownicy_Zatrudnienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownic__ID_Ro__3C69FB99" Association="Self.FK__Pracownic__ID_Ro__3C69FB99">
+      <End Role="Rodzaj_Umowy" EntitySet="Rodzaj_Umowy" />
+      <End Role="Pracownicy_Zatrudnienie" EntitySet="Pracownicy_Zatrudnienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownic__ID_St__3A81B327" Association="Self.FK__Pracownic__ID_St__3A81B327">
+      <End Role="Stanowisko" EntitySet="Stanowisko" />
+      <End Role="Pracownicy_Zatrudnienie" EntitySet="Pracownicy_Zatrudnienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proces_Pr__ID_Do__44CA3770" Association="Self.FK__Proces_Pr__ID_Do__44CA3770">
+      <End Role="Dokumentacja_Proces" EntitySet="Dokumentacja_Proces" />
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proces_Pr__ID_Pr__43D61337" Association="Self.FK__Proces_Pr__ID_Pr__43D61337">
+      <End Role="Proces_Technologiczny" EntitySet="Proces_Technologiczny" />
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proces_Pr__ID_Za__42E1EEFE" Association="Self.FK__Proces_Pr__ID_Za__42E1EEFE">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proces_Te__ID_Do__339FAB6E" Association="Self.FK__Proces_Te__ID_Do__339FAB6E">
+      <End Role="Dokumentacja_Proces" EntitySet="Dokumentacja_Proces" />
+      <End Role="Proces_Technologiczny" EntitySet="Proces_Technologiczny" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proces_Te__ID_Pr__3493CFA7" Association="Self.FK__Proces_Te__ID_Pr__3493CFA7">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Proces_Technologiczny" EntitySet="Proces_Technologiczny" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proces_Za__ID_Za__30C33EC3" Association="Self.FK__Proces_Za__ID_Za__30C33EC3">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="Proces_Zamowienie" EntitySet="Proces_Zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Przydzial__ID_Ma__503BEA1C" Association="Self.FK__Przydzial__ID_Ma__503BEA1C">
+      <End Role="Maszyny" EntitySet="Maszyny" />
+      <End Role="Przydzial_Zasobow" EntitySet="Przydzial_Zasobow" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Przydzial__ID_Pr__4F47C5E3" Association="Self.FK__Przydzial__ID_Pr__4F47C5E3">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Przydzial_Zasobow" EntitySet="Przydzial_Zasobow" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Przydzial__ID_Re__4E53A1AA" Association="Self.FK__Przydzial__ID_Re__4E53A1AA">
+      <End Role="Realizacja_Procesu" EntitySet="Realizacja_Procesu" />
+      <End Role="Przydzial_Zasobow" EntitySet="Przydzial_Zasobow" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Realizacj__ID_Et__4C6B5938" Association="Self.FK__Realizacj__ID_Et__4C6B5938">
+      <End Role="Rodzaj_Etapu" EntitySet="Rodzaj_Etapu" />
+      <End Role="Realizacja_Procesu" EntitySet="Realizacja_Procesu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Realizacj__ID_Pr__4B7734FF" Association="Self.FK__Realizacj__ID_Pr__4B7734FF">
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+      <End Role="Realizacja_Procesu" EntitySet="Realizacja_Procesu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stanowisk__ID_Pe__2E1BDC42" Association="Self.FK__Stanowisk__ID_Pe__2E1BDC42">
+      <End Role="Pensja" EntitySet="Pensja" />
+      <End Role="Stanowisko" EntitySet="Stanowisko" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zamowieni__ID_El__151B244E" Association="Self.FK__Zamowieni__ID_El__151B244E">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Zamowienie_Produkt" EntitySet="Zamowienie_Produkt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zamowieni__ID_Kl__48CFD27E" Association="Self.FK__Zamowieni__ID_Kl__48CFD27E">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zamowieni__ID_Pr__49C3F6B7" Association="Self.FK__Zamowieni__ID_Pr__49C3F6B7">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zamowieni__ID_Za__14270015" Association="Self.FK__Zamowieni__ID_Za__14270015">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="Zamowienie_Produkt" EntitySet="Zamowienie_Produkt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zapotrzeb__ID_El__531856C7" Association="Self.FK__Zapotrzeb__ID_El__531856C7">
+      <End Role="Magazyn_Elementy" EntitySet="Magazyn_Elementy" />
+      <End Role="Zapotrzebowanie_Opakowan" EntitySet="Zapotrzebowanie_Opakowan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zapotrzeb__ID_Pr__5224328E" Association="Self.FK__Zapotrzeb__ID_Pr__5224328E">
+      <End Role="Proces_Produkcyjny" EntitySet="Proces_Produkcyjny" />
+      <End Role="Zapotrzebowanie_Opakowan" EntitySet="Zapotrzebowanie_Opakowan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Znajomosc__ID_Je__4316F928" Association="Self.FK__Znajomosc__ID_Je__4316F928">
+      <End Role="Jezyk" EntitySet="Jezyk" />
+      <End Role="Znajomosc_Jezykow" EntitySet="Znajomosc_Jezykow" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Znajomosc__ID_Pr__440B1D61" Association="Self.FK__Znajomosc__ID_Pr__440B1D61">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Znajomosc_Jezykow" EntitySet="Znajomosc_Jezykow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Obslugi" Association="Self.FK_ID_Obslugi">
+      <End Role="Obsluga_Techniczna" EntitySet="Obsluga_Techniczna" />
+      <End Role="Czesci_Obsluga" EntitySet="Czesci_Obsluga" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Proces_Technologiczny" Association="Self.FK_ID_Proces_Technologiczny">
+      <End Role="Proces_Technologiczny" EntitySet="Proces_Technologiczny" />
+      <End Role="Maszyny_Proces" EntitySet="Maszyny_Proces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Proces_Technologiczny_2" Association="Self.FK_ID_Proces_Technologiczny_2">
+      <End Role="Proces_Technologiczny" EntitySet="Proces_Technologiczny" />
+      <End Role="Etapy_W_Procesie" EntitySet="Etapy_W_Procesie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Proces_Technologiczny_3" Association="Self.FK_ID_Proces_Technologiczny_3">
+      <End Role="Proces_Zamowienie" EntitySet="Proces_Zamowienie" />
+      <End Role="Elementy_Proces" EntitySet="Elementy_Proces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Proces_Technologiczny_4" Association="Self.FK_ID_Proces_Technologiczny_4">
+      <End Role="Proces_Technologiczny" EntitySet="Proces_Technologiczny" />
+      <End Role="Proces_Zamowienie" EntitySet="Proces_Zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Rodzaj_Maszyny" Association="Self.FK_ID_Rodzaj_Maszyny">
+      <End Role="Rodzaj_Maszyny" EntitySet="Rodzaj_Maszyny" />
+      <End Role="Maszyny_Proces" EntitySet="Maszyny_Proces" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
