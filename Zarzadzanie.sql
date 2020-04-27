@@ -155,7 +155,6 @@ VALUES
 ('17','9','5','1','2020-03-1','2050-03-01'),
 ('18','9','5','2','2020-03-1','2020-06-01');
 
-
 CREATE TABLE Jezyk (
 	ID_Jezyk int IDENTITY (1,1) PRIMARY KEY, 
 	Jezyk char(40) not null unique, 
