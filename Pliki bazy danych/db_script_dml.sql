@@ -76,7 +76,6 @@ VALUES
 ('Stanis³aw','Polak','90110369852','Widok 22, Warszawa','511569569'),
 ('Marcel','Wê¿yk','88062207956','Okopowa 7, Warszawa','603605604');
 
- 
 INSERT into Pensja(Pensja)
 VALUES
 ('2500'),
@@ -84,7 +83,6 @@ VALUES
 ('4000'),
 ('4500'),
 ('10000');
-
 
 INSERT into Stanowisko(Stanowisko,Opis,ID_Pensji)
 VALUES
@@ -98,12 +96,10 @@ VALUES
 ('Technik utrzymania ruchu','Brak','3'),
 ('Projektant', 'Brak', '3');
 
-/*
 INSERT into Rodzaj_Umowy(Rodzaj_Umowy, Uwagi)
 VALUES
 ('Zlecenie','Umowa uniemo¿liwa zdobycie premii'),
 ('O pracê','Umowa umo¿liwa zdobycie premii');
-  
 
 INSERT into Etat(Wymiar_Etatu, Uwagi)
 VALUES
@@ -133,7 +129,7 @@ VALUES
 ('Stanis³aw','Osieñko','93112400382','Obroñców Grodna 77, Warszawa','532658963'),
 ('Stanis³aw','Polak','90110369852','Widok 22, Warszawa','511569569'),
 ('Marcel','Wê¿yk','88062207956','Okopowa 7, Warszawa','603605604');
-*/
+
 INSERT INTO Rodzaj_Urlopu (Nazwa)
 VALUES 
 ('Urlop wypoczynkowy'),
@@ -146,15 +142,15 @@ VALUES
 ('22'),
 ('26'),
 ('brak');
-/*
+
 INSERT into Urlop (ID_Pracownika, Data_rozpoczêcia, Data_zakonczenia, ID_Rodzaj_Urlopu, ID_Wymiar_Urlopu)
 VALUES
 ('1','2020-03-15','2020-03-17', '3','4'),
 ('2','2020-03-18','2020-03-25', '1','2'),
 ('6','2020-03-20','2020-03-25', '1','2'),
-('8','2020-03-27','2020-04-05', '1','26'),
+('8','2020-03-27','2020-04-05', '1','3'),
 ('18','2020-04-20','2020-05-30', '3','4');
- */
+
 INSERT into Dzialy (Nazwa_dzialu)
 VALUES
 ('Zarz¹dzania'),
@@ -210,15 +206,6 @@ VALUES
 ('4','2020-04-18','2020-04-22','1', '8'),
 ('5','2020-04-20','2020-04-24','1', '8');
 
-
-INSERT into Faktury(ID_Zamowienia, ID_Klienta, Cena_Netto, Cena_Brutto, Podatek_VAT)
-VALUES
-('1','1','2000','2500','500'),
-('2','2','50000','62500','12500'),
-('3','3','3000','3750','750'),
-('4','4','4600','5750','1150'),
-('5','5','3200','4000','800');
-
 INSERT into Grupa(Nazwa)
 VALUES
 ('Czynsz'),
@@ -239,19 +226,6 @@ VALUES
 ('3958349856','4','Hurrasz','400','450','50'),
 ('4873409245','4','Kolettoea','750','800','50');
  
-
-INSERT INTO Zamowienie_Produkt(ID_Zamowienia, ID_Produkt, Ilosc)
-VALUES
-('1','2','300'),
-('2','1','500'),
-('2','4','500'),
-('3','3','270'),
-('4','1','100'),
-('4','2','50'),
-('4','3','100'),
-('5','5','200'),
-('5','2','200');
-
 INSERT INTO Srodki_Trwale (Nazwa, Producent, Numer_seryjny, ID_Dzialu, Koszt_zakupu, Roczny_stopien_amortyzacji, Gwarancja, Zamortyzowane)
 VALUES
 ('Laptop','Asus','VDA14586', '1', '5600', '20','22.05.2022', '0'),
@@ -281,8 +255,6 @@ VALUES
 ('¯elasko przemys³owe','Bosh','MD2/225/2019', '3', '4500', '14','12.04.2025', '0'),
 ('¯elasko przemys³owe','Bosh','MD2/199/2019', '3', '4500', '14','12.04.2025', '0'),
 ('¯elasko przemys³owe','Bosh','MD2/198/2019', '3', '4500', '14','12.04.2025', '0');
-
-
 
 ---------------------INSERTY MAGAZYN---------------------------------------------------------
 INSERT INTO
