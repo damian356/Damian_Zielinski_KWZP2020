@@ -191,7 +191,7 @@ VALUES
 ('7872398524','4','Grusome','500','700','200'),
 ('3958349856','4','Hurrasz','400','450','50'),
 ('4873409245','4','Kolettoea','750','800','50');
- 
+
 INSERT INTO Srodki_Trwale (Nazwa, Producent, Numer_seryjny, ID_Dzialu, Koszt_zakupu, Roczny_stopien_amortyzacji, Gwarancja, Zamortyzowane)
 VALUES
 ('Laptop','Asus','VDA14586', '1', '5600', '20','22-05-2022', '0'),
@@ -227,8 +227,8 @@ INSERT INTO
 	Statusy (Status_zatw)
 VALUES
 	('brak'),
-	('zatwierdzone'),
-	('odrzucone')
+	('odrzucone'),
+	('przyjete')
 
 INSERT INTO 
 	Polki_rozmiary (Wysokosc,Szerokosc,Glebokosc)
