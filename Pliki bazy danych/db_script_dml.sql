@@ -362,7 +362,8 @@ VALUES
 	('Produkcja'),
 	('Utrzymanie ruchu'),
 	('Biuro'),
-	('Dzial finansow')
+	('Dzial finansow'),
+	('Wysylka')
 
 INSERT INTO 
 	Regaly(Oznaczenie)
@@ -578,21 +579,31 @@ VALUES
 INSERT INTO		
 	Dostarczenia_Wewn(ID_pracownicy,ID_dostawy,Ilosc_dostarczona,ID_miejsca,Data_dostarczenia) 
 VALUES 
-	(4,1,1,3,'2020-04-08'),
-	(5,2,5,3,'2020-04-10'),
-	(5,3,15,3,'2020-04-10'),
-	(5,4,8,3,'2020-04-15'),
-	(5,4,10,3,'2020-04-17')
+	(12,1,1,3,'2020-04-08'),
+	(12,2,5,3,'2020-04-10'),
+	(11,3,15,3,'2020-04-10'),
+	(11,4,8,3,'2020-04-15'),
+	(11,4,10,3,'2020-04-17')
 
 INSERT INTO 
-	Dostarczenia_Zewn(ID_pracownicy,ID_zamowienia,Ilosc_dostarczona,ID_miejsca,Data_dostarczenia) 
-VALUES 
-	(5,1,200,3,'2020-04-19'),
-	(5,1,20,3,'2020-04-20'),
-	(5,2,15,3,'2020-04-21'),
-	(4,3,2000,3,'2020-04-25'),
-	(4,3,100,3,'2020-04-26')
-
+	Dostarczenia_Zewn(ID_pracownicy,ID_zamowienia,ID_element,Ilosc_dostarczona,ID_miejsca,Data_dostarczenia) 
+VALUES --ID_miejsca 6 to wysylka, 2 to produkcja
+	(12,1,1,-100,6,'2020-04-30'),
+	(12,1,3,-100,6,'2020-04-30'),
+	(11,3,1,-100,6,'2020-05-01'),
+	(11,3,4,-100,6,'2020-05-05'),
+	(12,2,5,-500,6,'2020-05-02'),
+	(12,5,6,-50,6,'2020-05-02'),
+	(11,5,7,-50,6,'2020-05-04'),
+	(11,4,7,-5000,6,'2020-05-05'),--
+	(12,1,1,100,2,'2020-04-29'),
+	(12,1,3,100,2,'2020-04-29'),
+	(11,3,1,100,2,'2020-04-30'),
+	(11,3,4,100,2,'2020-05-04'),
+	(12,2,5,500,2,'2020-05-01'),
+	(12,5,6,50,2,'2020-05-01'),
+	(11,5,7,50,2,'2020-05-03'),
+	(11,4,7,5000,2,'2020-05-04')
 
 ------Dodatokowy insert zarz¹dzanie---
 INSERT INTO Zamowienie_Element (ID_Zamowienia, ID_Element, Ilosc, Licz_do_zamowienia)
