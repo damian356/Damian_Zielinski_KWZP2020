@@ -462,7 +462,6 @@ create table Etapy_W_Procesie (
 GO
 
 -----------------------------------------Produkcja----------------------------------------- 
-    
 CREATE TABLE Proces_Produkcyjny  
 (ID_Procesu_Produkcyjnego int IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 ID_Zamowienie_Element int FOREIGN KEY REFERENCES Zamowienie_Element (ID_Zamowienie_Element) NOT NULL, 
@@ -494,9 +493,8 @@ CREATE TABLE Przydzial_Zasobow
 ID_Realizacji_Procesu int FOREIGN KEY REFERENCES Realizacja_Procesu (ID_Realizacji_Procesu) NOT NULL, 
 ID_Pracownika int FOREIGN KEY REFERENCES Pracownicy (ID_Pracownika) NOT NULL, 
 ID_Maszyny int FOREIGN KEY REFERENCES Maszyny (ID_Maszyny) NOT NULL,
-Data_Rozpoczecia SMALLDATETIME,
-Data_Zakonczenia SMALLDATETIME
-);
+Data_Rozpoczecia SMALLDATETIME NULL,
+Data_Zakonczenia SMALLDATETIME NULL);
   
 CREATE TABLE Kontrola_Efektywnosci  
 (ID_Kontrola_Efektywnosci int IDENTITY(1,1) PRIMARY KEY NOT NULL, 

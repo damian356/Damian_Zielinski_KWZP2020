@@ -720,12 +720,12 @@ VALUES
 
 INSERT INTO Proces_Zamowienie(ID_Proces_Technologiczny,ID_Zamowienie_Element,Kompletny_Proces)
 VALUES
-(1,2,1),
-(2,1,1),
-(3,4,1),
-(4,3,1),
-(5,1,1),
-(6,2,1);
+(1,1,1),
+(2,2,1),
+(3,3,1),
+(4,4,1),
+(5,5,1),
+(6,6,1);
 
 INSERT INTO Elementy_Proces(ID_Proces_Technologiczny,ID_Element,Liczba)
 VALUES
@@ -787,27 +787,28 @@ VALUES
 (6,7,10),
 (6,10,10);
 	
-	---------------------Inserty Produkcja-------------------------
-INSERT INTO Proces_Produkcyjny (ID_Zamowienie_Produkt, ID_Proces_Technologiczny, Data_Rozpoczecia, Data_Zakonczenia, ID_Dokumentacja_Proces, Uwagi)
-VALUES
-(1, 1, '2020-04-12 09:21:15', '2020-04-14 19:00:00', 1, 'brak uwag'),
-(2, 2, '2020-04-13 06:30:00', '2020-04-14 08:30:00', 2, 'brak uwag'),
-(3, 3, '2020-04-14 09:30:00', '2020-04-19 13:35:01', 3, 'brak uwag'),
-(4, 4, '2020-04-20 12:20:00', '2020-04-21 13:15:00', 4, 'brak uwag'),
-(5, 5, '2020-04-22 09:25:00', '2020-04-23 21:45:00', 5, 'brak uwag'),
-(5, 6, '2020-04-22', '2020-04-23', 6, 'brak uwag');
 
-INSERT INTO Material_Na_Produkcji (ID_Procesu_Produkcyjnego, ID_Element, Liczba, ID_Jednostka, Odpad)
+	---------------------Inserty Produkcja-------------------------
+INSERT INTO Proces_Produkcyjny ( ID_Zamowienie_Element, Proponowana_data_dostawy_materialu, ID_Dostarczenia, Data_Rozpoczecia, Data_Zakonczenia, Uwagi )
 VALUES
-(1, 2, 15, 4, 0.5), 
-(1, 4, 30, 8, 0), 
-(2, 2, 20, 4, 1.2), 
-(3, 3, 33, 3, 1.5), 
-(3, 4, 40, 8, 0), 
-(4, 2, 50, 4, 1), 
-(5, 2, 30, 4, 2.5), 
-(6, 2, 50, 4, 1.5), 
-(6, 4, 15, 8, 1); 
+(1, '2020-04-12 06:00:00', 1, '2020-04-12 09:21:15', '2020-04-14 19:00:00',  'brak uwag'),
+(2, '2020-04-13 06:00:00', 2, '2020-04-13 06:30:00', '2020-04-14 08:30:00',  'brak uwag'),
+(3, '2020-04-14 06:00:00', 3,'2020-04-14 09:30:00', '2020-04-19 13:35:01',  'brak uwag'),
+(4, '2020-04-20 06:00:00', 4, '2020-04-20 12:20:00', '2020-04-21 13:15:00',  'brak uwag'),
+(5, '2020-04-20 06:00:00', 5,'2020-04-20 12:20:00', '2020-04-21 13:15:00',  'brak uwag');
+
+
+
+INSERT INTO Material_Na_Produkcji (ID_Procesu_Produkcyjnego, ID_Elementy_Proces, Odpad, Niezuzyty_material, Magazyn_odebral_material) 
+VALUES
+(1, 2, 0, 4, 1), 
+(1, 4, 1, 8, 1), 
+(2, 2, 1, 4, 1), 
+(3, 3, 2, 3, 1), 
+(3, 4, 0, 8, 1), 
+(4, 2, 3, 4, 1), 
+(5, 2, 0, 4, 1); 
+
 
 INSERT INTO Realizacja_Procesu (ID_Procesu_Produkcyjnego, ID_Etapu, Data_Rozpoczecia_Procesu, Data_Zakonczenia_Procesu, Data_Kontroli, Uwagi_Kontroli)
 VALUES
@@ -842,30 +843,20 @@ VALUES
 (4, 5, '2020-04-20 18:36:00','2020-04-21 17:40:00', '2020-04-21 17:45:00','brak uwag'),
 (4, 8, '2020-04-21 07:50:00','2020-04-21 13:02:00', '2020-04-21 13:08:00','brak uwag');
 
-INSERT INTO Przydzial_Zasobow (ID_Realizacji_Procesu, ID_Pracownika , ID_Maszyny)
+INSERT INTO Przydzial_Zasobow (ID_Realizacji_Procesu, ID_Pracownika , ID_Maszyny, Data_Rozpoczecia, Data_Zakonczenia)
 VALUES
-(1, 1, 10),
-(1, 2, 11),
-(2, 9, 18),
-(3, 5, 1),
-(3, 6, 2);
+(1, 1, 10, '2020-04-12 10:21:15', '2020-04-12 10:25:00'),
+(1, 2, 11, '2020-04-12 10:21:15', '2020-04-12 10:25:00'),
+(2, 9, 18, '2020-04-12 12:34:12', '2020-04-12 12:36:00'),
+(3, 5, 1, '2020-04-12 12:37:15', '2020-04-12 15:38:00'),
+(3, 6, 2, '2020-04-12 12:37:15', '2020-04-12 15:38:00');
 
-INSERT INTO Zapotrzebowanie_Opakowan (ID_Procesu_Produkcyjnego, ID_Element, Liczba, Czy_Otrzymano, Uwagi)
-VALUES
-(1, 11, 300, 1, 'brak uwag'), 
-(1, 10, 10, 1, 'brak uwag'),
-(2, 11, 500, 1, 'brak uwag'),
-(2, 10, 8, 1, 'brak uwag'),
-(3, 11, 500, 1, 'brak uwag'),
-(3, 10, 10, 1, 'brak uwag'),
-(4, 11, 270, 1, 'brak uwag'),
-(4, 10, 10, 1, 'brak uwag');
 
-INSERT INTO Kontrola_Efektywnosci (ID_Procesu_Produkcyjnego, Data_Kontroli, Dokument, Uwagi, Zgodnosc_Zamowienia , Liczba_Poprawnych, Liczba_Blednych)
+INSERT INTO Kontrola_Efektywnosci (ID_Procesu_Produkcyjnego, Data_Kontroli, Dokument, Uwagi, Zgodnosc_Zamowienia , Liczba_Poprawnych)
 VALUES
-(1, '2020-04-14 18:50:00', 'dok_1.img', 'brak uwag', 1, 300, 0),
-(2, '2020-04-14 08:30:00', 'dok_2.img', 'brak uwag', 1, 505, 4),
-(3, '2020-04-19 13:30:01', 'dok_3.img', 'brak uwag', 1, 500, 0),
-(4, '2020-04-21 13:15:00', 'dok_4.img', 'brak uwag', 1, 280, 5),
-(5, '2020-04-23 21:40:00', 'dok_4.img', 'brak uwag', 1, 103, 1);
+(1, '2020-04-14 18:50:00', 'dok_1.img', 'brak uwag', 1, 300),
+(2, '2020-04-14 08:30:00', 'dok_2.img', 'brak uwag', 1, 505),
+(3, '2020-04-19 13:30:01', 'dok_3.img', 'brak uwag', 1, 500),
+(4, '2020-04-21 13:15:00', 'dok_4.img', 'brak uwag', 1, 280),
+(5, '2020-04-23 21:40:00', 'dok_4.img', 'brak uwag', 1, 103);
 use master
