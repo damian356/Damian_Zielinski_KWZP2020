@@ -668,21 +668,21 @@ VALUES
 ('5','6','50','0'),
 ('5','7','50','0');
 
-	------------- INSERTY PRZYGOTOANIE PRODUKCJI
+	----------------------------------- INSERTY PRZYGOTOANIE PRODUKCJI---------------------------------
 
-	INSERT INTO Rodzaj_Dokumentacji(Nazwa)
+INSERT INTO Rodzaj_Dokumentacji(Nazwa)
 VALUES
 ('Kod na wycinarkê'),
 ('Dokumentacja 2D');
 
-INSERT INTO Dokumentacje(ID_Rodzaj_Dokumentacji,ID_Pracownika,Data_Wykonania)
+INSERT INTO Dokumentacje(ID_Rodzaj_Dokumentacji,ID_Pracownika,Data_Wykonania,Plik)
 VALUES
-(2,17,2020-03-01),
-(1,13,2020-03-06),
-(2,18,2020-03-16),
-(1,14,2020-04-01),
-(1,13,2020-04-10),
-(2,18,2020-05-11);
+(2,17,2020-03-01,'lokalizacja'),
+(1,13,2020-03-06,'lokalizacja'),
+(2,18,2020-03-16,'lokalizacja'),
+(1,14,2020-04-01,'lokalizacja'),
+(1,13,2020-04-10,'lokalizacja'),
+(2,18,2020-05-11,'lokalizacja');
 
 INSERT INTO Dokumentacja_proces(ID_Dokumentacji)
 VALUES
@@ -704,87 +704,90 @@ VALUES
 (4,13),
 (1,13);
 
-INSERT INTO Rodzaj_Maszyny (Rodzaj_Maszyny)
+INSERT INTO Rodzaj_Maszyny (Rodzaj_Maszyny,Koszt_Rbh)
 VALUES
-('Maszyna_Do_Szycia'),
-('Wycinarka_Laserowa'),
-('Pralka'),
-('Suszarka'),
-('Maszyna_Do_Prasowania');
+('Maszyna_Do_Szycia',60),
+('Wycinarka_Laserowa',70),
+('Pralka',80),
+('Suszarka',90),
+('Maszyna_Do_Prasowania',100),
+('¯elazko',50);
 
-INSERT INTO Maszyny (Model, ID_Rodzaj_Maszyny, Producent, Gwarancja_Do, Data_Zakupu, Resurs_Rbh, Resurs_Data_Serwisu)
+INSERT INTO Maszyny (ID_Srodki_Trwale,ID_Rodzaj_Maszyny,Resurs_Rbh,Serwis_Co_Ile)
 VALUES
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 200, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 180, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 190, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 220, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 170, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 170, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 170, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 170, '2020-07-10'),
-('Pelikan_MD2', 1, '£ucznik', '2022-04-10', '2020-04-10', 170, '2020-07-10'),
-('Laser_Tag_012', 2, 'Laser_Pol', '2022-04-15', '2020-04-15', 700, '2020-07-15'),
-('Laser_Tag_012', 2, 'Laser_Pol', '2022-04-15', '2020-04-15', 700, '2020-07-15'),
-('Rotate_Master', 3, 'Whirpool', '2022-04-06', '2020-04-06', 300, '2020-10-06'),
-('Rotate_Master', 3, 'Whirpool', '2022-04-06', '2020-04-06', 300, '2020-10-06'),
-('Rotate_Master', 3, 'Whirpool', '2022-04-06', '2020-04-06', 300, '2020-10-06'),
-('Air_Dryer_HK2', 4, 'Whirpool', '2022-04-06', '2020-04-06', 200, '2020-10-06'),
-('Air_Dryer_HK2', 4, 'Whirpool', '2022-04-06', '2020-04-06', 200, '2020-10-06'),
-('Air_Dryer_HK2', 4, 'Whirpool', '2022-04-06', '2020-04-06', 200, '2020-10-06'),
-('Iron_Cast_v2', 5, 'Bosh', '2022-04-05', '2020-05-06', 300, '2020-10-05'),
-('Iron_Cast_v2', 5, 'Bosh', '2022-04-05', '2020-05-06', 300, '2020-10-05');
+(9,2,1000,60),
+(10,2,1000,60),
+(11,2,1000,60),
+(12,2,1000,60),
+(13,1,1100,90),
+(14,1,1100,90),
+(15,1,1100,90),
+(16,1,1100,90),
+(17,1,1100,90),
+(18,1,1100,90),
+(19,1,1100,90),
+(20,3,2000,50),
+(21,3,2000,50),
+(22,3,2000,50),
+(23,3,2000,50),
+(24,6,3000,80),
+(25,6,3000,80),
+(26,6,3000,80),
+(27,6,3000,80);
 
 INSERT INTO Rodzaj_Obslugi(Nazwa)
 VALUES
 ('Serwis'),
-('Naprawa'),
-('Przezbrojenie');
+('Naprawa');
 
-INSERT INTO Obsluga_Techniczna (ID_Maszyny, ID_Rodzaj_Obslugi, Data_Wykonania, ID_Pracownika)
+INSERT INTO Obsluga_Techniczna (ID_Maszyny,ID_Rodzaj_Obslugi,Data_Wykonania,ID_Pracownika)
 VALUES
-(1,2,2020-04-22,4),
-(10,1,2020-04-27,4),
-(11,1,2020-04-27,4),
-(3,3,2020-04-23,4),
-(4,3,2020-04-23,4);
+(1,2,'2020-04-22',15),
+(10,1,'2020-04-27',16),
+(11,1,'2020-04-02',16),
+(3,2,'2020-04-23',15),
+(4,1,'2020-04-23',15),
+(9,1,'2020-05-01',16);
 
-INSERT into Czesci_Obsluga(ID_Element, Ilosc)
+INSERT into Czesci_Obsluga(ID_Obsluga_Techniczna,ID_Element,Liczba)
 VALUES
-(1,2),
-(6,1),
-(7,1),
-(8,2),
-(9,2),
-(6,2),
-(1,2),
-(7,1),
-(8,2);
+(1,1,2),
+(1,6,2),
+(2,7,1),
+(3,1,3),
+(3,7,1),
+(4,1,2),
+(4,6,5),
+(5,1,2),
+(5,9,1),
+(6,1,2),
+(6,7,1);
 
-INSERT INTO Maszyny_Proces ( ID_Proces_Technologiczny, ID_Rodzaj_Maszyny, Liczba, Liczba_Rbh)
+INSERT INTO Maszyny_Proces(ID_Proces_Technologiczny,ID_Rodzaj_Maszyny,Liczba_Maszyn,Liczba_Rbh_Maszyna)
 VALUES
-(1, 1, 3, 240),
-(1, 2, 1, 40),
-(1, 3, 1, 80),
-(1, 4, 1, 40),
-(1, 5, 1, 30),
-(2, 1, 2, 120),
-(2, 2, 1, 20),
-(2, 3, 1, 60),
-(2, 4, 1, 30),
-(2, 5, 1, 15),
-(3, 1, 5, 500),
-(3, 2, 1, 80),
-(3, 3, 2, 160),
-(3, 4, 2, 100);
+(1,1,3,240),
+(1,2,1,40),
+(1,3,1,80),
+(1,4,1,40),
+(1,5,1,30),
+(2,1,2,120),
+(2,2,1,20),
+(2,3,1,60),
+(2,4,1,30),
+(2,5,1,15),
+(3,1,5,500),
+(3,2,1,80),
+(3,3,2,160),
+(3,4,2,100);
 
-INSERT INTO Proces_Zamowienie(ID_Proces_Technologiczny,ID_Zamowienie_Produkt)
+INSERT INTO Proces_Zamowienie(ID_Proces_Technologiczny,ID_Zamowienie_Element,Kompletny_Proces)
 VALUES
-(1,2),
-(2,1),
-(3,4),
-(4,3),
-(5,1),
-(6,2);
+(1,2,1),
+(2,1,1),
+(3,4,1),
+(4,3,1),
+(5,1,1),
+(6,2,1);
 
 INSERT INTO Elementy_Proces(ID_Proces_Technologiczny,ID_Element,Liczba)
 VALUES
@@ -798,50 +801,55 @@ VALUES
 (6,2,50),
 (6,4,15);
 
-INSERT INTO Etapy_W_Procesie (ID_Proces_Technologiczny, ID_Etapu, Czas)
+INSERT INTO Etapy_W_Procesie (ID_Proces_Technologiczny,ID_Etapu,Czas)
 VALUES
-(1, 1, 1),
-(1, 2, 2),
-(1, 3, 3),
-(1, 4, 4),
-(1, 5, 5),
-(1, 6, 5),
-(1, 7, 5),
-(1, 8, 5),
-(1, 9, 5),
-(1, 10, 5),
-(2, 1, 1),
-(2, 2, 2),
-(2, 3, 3),
-(2, 5, 5),
-(2, 8, 5),
-(3, 1, 1),
-(3, 2, 2),
-(3, 3, 3),
-(3, 4, 4),
-(3, 5, 5),
-(3, 6, 5),
-(3, 7, 5),
-(3, 8, 5),
-(3, 9, 5),
-(3, 10, 5),
-(4, 1, 1),
-(4, 2, 2),
-(4, 3, 3),
-(4, 5, 5),
-(4, 8, 5),
-(5, 1, 1),
-(5, 2, 2),
-(5, 3, 3),
-(5, 4, 4),
-(5, 5, 5),
-(5, 6, 5),
-(5, 7, 5),
-(5, 8, 5),
-(5, 9, 5),
-(5, 10, 5);
-GO
-	--------------------Inserty Produkcja-------------------------
+(1,1,1),
+(1,2,2),
+(1,3,3),
+(1,4,4),
+(1,5,5),
+(1,6,5),
+(1,7,5),
+(1,8,5),
+(1,9,5),
+(1,10,5),
+(2,1,1),
+(2,2,2),
+(2,3,3),
+(2,5,5),
+(2,8,5),
+(3,1,1),
+(3,2,2),
+(3,3,3),
+(3,4,4),
+(3,5,5),
+(3,6,5),
+(3,7,5),
+(3,8,5),
+(3,9,5),
+(3,10,5),
+(4,1,1),
+(4,2,2),
+(4,3,3),
+(4,5,5),
+(4,8,5),
+(5,1,1),
+(5,2,2),
+(5,3,3),
+(5,4,4),
+(5,5,5),
+(5,6,5),
+(5,7,5),
+(5,8,5),
+(5,9,5),
+(5,10,5),
+(6,1,10),
+(6,2,2),
+(6,3,5),
+(6,7,10),
+(6,10,10);
+	
+	---------------------Inserty Produkcja-------------------------
 INSERT INTO Proces_Produkcyjny (ID_Zamowienie_Produkt, ID_Proces_Technologiczny, Data_Rozpoczecia, Data_Zakonczenia, ID_Dokumentacja_Proces, Uwagi)
 VALUES
 (1, 1, '2020-04-12 09:21:15', '2020-04-14 19:00:00', 1, 'brak uwag'),
