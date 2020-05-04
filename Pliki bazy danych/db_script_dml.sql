@@ -12,17 +12,17 @@ VALUES
     ('Guzikowanie'),
     ('Pakowanie'),
     ('Metkowanie - pistolet'),
-    ( 'Wszywanie suwaków');
+    ('Wszywanie suwaków');
 
-INSERT into Klienci(Imie, Nazwisko, Nazwa_Firmy, NIP, Adres, Odleglosc_km, Telefon, E_Mail)
+INSERT into Klienci (Imie, Nazwisko, Nazwa_Firmy, NIP, Adres, Odleglosc_km, Telefon, E_Mail)
 VALUES
-('Jan','Jankowski','Firmowo','1213141516','Firmowa 2, Warszawa','100','987548362','Mailfirmowy@gmail.com'),
+('Jan','Jankowski','Firmowo','1213141516','Firmowa 2, Warszawa','100','987548362','mailfirmowy@gmail.com'),
 ('Piotr','Piotrowski','Zamaseczowo','9882351235','Kazimierza Wielkiego 44, £ódŸ', '90','675234123','Zamaseczki@gmail.com'),
 ('Pawe³','Paw³owski','Ulandia','7654827346','Aleje Religijne 784, Mr¹gowo','526374583','92','Tomasz.Rogulski@gmail.com'),
 ('Kamil','Kamilowski','Primaris','2845401300','Królewska 1, Warszawa','748372421','70','FirmowyMail@gmail.com'),
 ('Ferrus','Manus','IOM','1113123125','Pa³acowa 1, Terra', '70','777838352','IOM.mail@gmail.com');
 
-INSERT into Pensja(Pensja)
+INSERT into Pensja (Pensja)
 VALUES
 ('2500'),
 ('3000'),
@@ -30,7 +30,7 @@ VALUES
 ('4500'),
 ('10000');
 
-INSERT into Stanowisko(Stanowisko,Opis,ID_Pensji)
+INSERT into Stanowisko (Stanowisko,Opis,ID_Pensji)
 VALUES
 ('Operator Maszyn Laserowych','Brak','3'),
 ('Szwacz','Brak','1'),
@@ -41,19 +41,6 @@ VALUES
 ('Technolog','Brak','4'),
 ('Technik utrzymania ruchu','Brak','3'),
 ('Projektant', 'Brak', '3');
-
-INSERT into Rodzaj_Umowy(Rodzaj_Umowy, Uwagi)
-VALUES
-('Zlecenie','Umowa uniemo¿liwa zdobycie premii'),
-('O pracê','Umowa umo¿liwa zdobycie premii');
-
-INSERT into Etat(Wymiar_Etatu, Uwagi)
-VALUES
-('1/1','Brak'),
-('1/2','Brak'),
-('1/4','Brak'),
-('3/4','Brak'),
-('1/8','Brak');
 
 INSERT into Pracownicy (Imie, Nazwisko, Pesel, Adres, Telefon)
 VALUES 
@@ -96,7 +83,7 @@ VALUES
 ('Technik utrzymania ruchu','Brak','3'),
 ('Projektant', 'Brak', '3');
 
-INSERT into Rodzaj_Umowy(Rodzaj_Umowy, Uwagi)
+INSERT into Rodzaj_Umowy (Rodzaj_Umowy, Uwagi)
 VALUES
 ('Zlecenie','Umowa uniemo¿liwa zdobycie premii'),
 ('O pracê','Umowa umo¿liwa zdobycie premii');
@@ -108,27 +95,6 @@ VALUES
 ('1/4','Brak'),
 ('3/4','Brak'),
 ('1/8','Brak');
-
-INSERT into Pracownicy (Imie, Nazwisko, Pesel, Adres, Telefon)
-VALUES 
-('Antoni','Kropka','86100512368','Kopalniana 2, Warszawa','511325698'),
-('Mariusz','Drzewniak','88040412856','Sternicza 8, Warszawa','541125896'),
-('Wiktor','Strzelczyk','88050302745','Stalowa 12, Warszawa','668245987'),
-('Adrian','Ostorczyk','96021526982','Mokra 114A, Warszawa','662125795'),
-('Micha³','Grzebacz','94010501482','Wrzesiñska 14, Warszawa','54121458'),
-('Andrzej','Kopczyñski','9402023685','Kolejowa 2, Warszawa','514789256'),
-('Michalina','Owczarz','95030698245','Smolna 8, Warszawa','685965742'),
-('Karolina','Sowa','95010114562','Kwietna 44C, Warszawa','668523547'),
-('Magdalena','Puchacz','98120302589','Wolnoœci 99, Warszawa','665212252'),
-('Micha³','Niemiec','89030508564','Zapolna 5, Warszawa','610102103'),
-('Pawe³','Ziomko','79010145963','Korotyñska 14, Warszawa','602568235'),
-('Filip','Michalski','81111101569','Pieniñska 78, Warszawa','669368214'),
-('Dominik','Kosiniak','90021626579','Stalowa 8, Warszawa','658596312'),
-('Mariusz','Pawlak','92090718965','Morska 105, Warszawa','512478256'),
-('Krzysztof','Kargul','91101565987','S.Staszica 77, Warszawa','511447265'),
-('Stanis³aw','Osieñko','93112400382','Obroñców Grodna 77, Warszawa','532658963'),
-('Stanis³aw','Polak','90110369852','Widok 22, Warszawa','511569569'),
-('Marcel','Wê¿yk','88062207956','Okopowa 7, Warszawa','603605604');
 
 INSERT INTO Rodzaj_Urlopu (Nazwa)
 VALUES 
@@ -225,44 +191,44 @@ VALUES
 ('7872398524','4','Grusome','500','700','200'),
 ('3958349856','4','Hurrasz','400','450','50'),
 ('4873409245','4','Kolettoea','750','800','50');
- 
+
 INSERT INTO Srodki_Trwale (Nazwa, Producent, Numer_seryjny, ID_Dzialu, Koszt_zakupu, Roczny_stopien_amortyzacji, Gwarancja, Zamortyzowane)
 VALUES
-('Laptop','Asus','VDA14586', '1', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA14444', '1', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA54896', '2', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA57892', '2', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA23696', '4', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA33365', '4', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA23569', '4', '5600', '20','22.05.2022', '0'),
-('Laptop','Asus','VDA23589', '1', '5600', '20','22.05.2022', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34KA1123', '3', '105000', '14','10.10.2024', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34RO4589', '3', '105000', '14','10.10.2024', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34HA1145', '3', '105000', '14','10.10.2024', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34WU5568', '3', '105000', '14','10.10.2024', '0'),
-('MAszyna Do Szycia','Janome','W186', '3', '5500', '14','01.05.2026', '0'),
-('MAszyna Do Szycia','Janome','W189', '3', '5500', '14','01.05.2026', '0'),
-('MAszyna Do Szycia','Janome','W199', '3', '5500', '14','01.05.2026', '0'),
-('MAszyna Do Szycia','Janome','W253', '3', '5500', '14','01.05.2026', '0'),
-('MAszyna Do Szycia','£ucznik','A456VB', '3', '6200', '14','01.05.2026', '0'),
-('MAszyna Do Szycia','£ucznik','AA45GH', '3', '6200', '14','01.05.2026', '0'),
-('MAszyna Do Szycia','£ucznik','ATY45A', '3', '6200', '14','01.05.2026', '0'),
-('Pralka','Whirpool','B56/456', '3', '8000', '14','01.10.2027', '0'),
-('Pralka','Whirpool','B56/678', '3', '8000', '14','01.10.2027', '0'),
-('Pralka','Whirpool','B56/678', '3', '8000', '14','01.10.2027', '0'),
-('Pralka','Whirpool','B56/345', '3', '8000', '14','01.10.2027', '0'),
-('¯elasko przemys³owe','Bosh','MD2/125/2019', '3', '4500', '14','12.04.2025', '0'),
-('¯elasko przemys³owe','Bosh','MD2/225/2019', '3', '4500', '14','12.04.2025', '0'),
-('¯elasko przemys³owe','Bosh','MD2/199/2019', '3', '4500', '14','12.04.2025', '0'),
-('¯elasko przemys³owe','Bosh','MD2/198/2019', '3', '4500', '14','12.04.2025', '0');
+('Laptop','Asus','VDA14586', '1', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA14444', '1', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA54896', '2', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA57892', '2', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA23696', '4', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA33365', '4', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA23569', '4', '5600', '20','22-05-2022', '0'),
+('Laptop','Asus','VDA23589', '1', '5600', '20','22-05-2022', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34KA1123', '3', '105000', '14','10-10-2024', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34RO4589', '3', '105000', '14','10-10-2024', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34HA1145', '3', '105000', '14','10-10-2024', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34WU5568', '3', '105000', '14','10-10-2024', '0'),
+('MAszyna Do Szycia','Janome','W186', '3', '5500', '14','01-05-2026', '0'),
+('MAszyna Do Szycia','Janome','W189', '3', '5500', '14','01-05-2026', '0'),
+('MAszyna Do Szycia','Janome','W199', '3', '5500', '14','01-05-2026', '0'),
+('MAszyna Do Szycia','Janome','W253', '3', '5500', '14','01-05-2026', '0'),
+('MAszyna Do Szycia','£ucznik','A456VB', '3', '6200', '14','01-05-2026', '0'),
+('MAszyna Do Szycia','£ucznik','AA45GH', '3', '6200', '14','01-05-2026', '0'),
+('MAszyna Do Szycia','£ucznik','ATY45A', '3', '6200', '14','01-05-2026', '0'),
+('Pralka','Whirpool','B56/456', '3', '8000', '14','01-10-2027', '0'),
+('Pralka','Whirpool','B56/678', '3', '8000', '14','01-10-2027', '0'),
+('Pralka','Whirpool','B56/678', '3', '8000', '14','01-10-2027', '0'),
+('Pralka','Whirpool','B56/345', '3', '8000', '14','01-10-2027', '0'),
+('¯elasko przemys³owe','Bosh','MD2/125/2019', '3', '4500', '14','12-04-2025', '0'),
+('¯elasko przemys³owe','Bosh','MD2/225/2019', '3', '4500', '14','12-04-2025', '0'),
+('¯elasko przemys³owe','Bosh','MD2/199/2019', '3', '4500', '14','12-04-2025', '0'),
+('¯elasko przemys³owe','Bosh','MD2/198/2019', '3', '4500', '14','12-04-2025', '0');
 
 ---------------------INSERTY MAGAZYN---------------------------------------------------------
 INSERT INTO
 	Statusy (Status_zatw)
 VALUES
 	('brak'),
-	('zatwierdzone'),
-	('odrzucone')
+	('odrzucone'),
+	('przyjete')
 
 INSERT INTO 
 	Polki_rozmiary (Wysokosc,Szerokosc,Glebokosc)
