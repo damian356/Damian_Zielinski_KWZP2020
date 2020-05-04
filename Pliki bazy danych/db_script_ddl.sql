@@ -10,11 +10,6 @@ CREATE TABLE Rodzaj_Etapu
 Nazwa varchar(30) NOT NULL); 
 ----------------------------------Finanse i Zarz¹dzanie--------------------------------------------------- 
 
-CREATE TABLE Rodzaj_Urlopu (
-ID_Rodzaj_Urlopu int IDENTITY(1,1) Primary key, 
-Nazwa varchar(20)
-)
-
 CREATE TABLE Klienci ( 
 ID_Klienta int IDENTITY(1,1) PRIMARY KEY, 
 Imie varchar(50) not null, 
@@ -26,6 +21,7 @@ Odleglosc_km int NOT NULL,
 Telefon varchar(15) not null unique,  
 E_Mail varchar(50) not null unique 
 ); 
+
 CREATE TABLE Dzialy ( 
 ID_Dzialu int IDENTITY(1,1) PRIMARY KEY, 
 Nazwa_dzialu varchar(50) not null, 
@@ -42,10 +38,12 @@ Roczny_stopien_amortyzacji varchar(100) not null,
 Gwarancja DATE not null default GETDATE(),  
 Zamortyzowane BIT not null unique 
 ); 
+
 CREATE TABLE Pensja ( 
 ID_Pensja int IDENTITY (1,1) PRIMARY KEY, 
 Pensja real not null 
 ); 
+
 
 CREATE TABLE Stanowisko ( 
 ID_Stanowiska int IDENTITY (1,1) PRIMARY KEY,  
@@ -72,15 +70,25 @@ Imie varchar(50) not null,
 Nazwisko varchar(50) not null, 
 Pesel varchar(11) not null unique, 
 Adres varchar(100) not null, 
-Telefon varchar(15) not null unique,
-); 
+Telefon varchar(15) not null unique
+);
+
+CREATE TABLE Rodzaj_Urlopu (
+ID_Rodzaj_Urlopu int IDENTITY(1,1) Primary key, 
+Nazwa varchar(20)not null
+);
+ CREATE TABLE Wymiar_Urlopu (
+ID_Wymiar_Urlopu int IDENTITY(1,1) Primary key, 
+Iloœæ_dni varchar(20)not null
+);
 
 CREATE TABLE Urlop ( 
 ID_Urlop int IDENTITY (1,1) PRIMARY KEY, 
 ID_Pracownika int FOREIGN KEY REFERENCES Pracownicy(ID_Pracownika), 
 Data_rozpoczêcia DATE not null default GETDATE(), 
 Data_zakonczenia DATE not null default GETDATE(),
-ID_Rodzaj_Urlopu int FOREIGN KEY REFERENCES Rodzaj_Urlopu  (ID_Rodzaj_Urlopu)
+ID_Rodzaj_Urlopu int FOREIGN KEY REFERENCES Rodzaj_Urlopu (ID_Rodzaj_Urlopu),
+ID_Wymiar_Urlopu int FOREIGN KEY REFERENCES Wymiar_Urlopu (ID_Wymiar_Urlopu)
 );  
 
 CREATE TABLE Pracownicy_Zatrudnienie ( 
