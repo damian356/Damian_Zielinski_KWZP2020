@@ -17,7 +17,7 @@ Nazwisko varchar(50) not null,
 Nazwa_Firmy varchar(100) unique,  
 NIP varchar(10) UNIQUE,  
 Adres varchar(100) not null, 
-Odleglosc_km int NOT NULL,
+Odleglosc_km varchar(15) not null unique,
 Telefon varchar(15) not null unique,  
 E_Mail varchar(50) not null unique 
 ); 
