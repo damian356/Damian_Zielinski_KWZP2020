@@ -1,5 +1,5 @@
 
-USE Szwalnia
+USE Szwalnia1
 
 -------------------------------Inserty zarz¹dzanie i finanse-------------------------
 INSERT INTO Rodzaj_Etapu (Nazwa)
@@ -428,12 +428,7 @@ VALUES
 	(11,'Kurtka',0),
 	(12,'Bluza',0),
 	(13,'Suwak',0)
-	-- 12 koszula
-	-- 13 spodnie
-	-- 14 rekawiczki
-	-- 15 kurtka
-	-- 16 bluza
-	-- 17 suwak
+
 INSERT INTO 
 	Elementy_Cechy (ID_Element,ID_Cecha,Wartosc_Cechy_Liczbowa,ID_Jednostka,Wartosc_Cechy_Slowna)
 VALUES
@@ -635,6 +630,8 @@ VALUES
 ('3','12','100','0'),
 ('5','14','50','0'),
 ('5','16','50','0');
+
+
 
 -------------------------------------- INSERTY PRZYGOTOANIE PRODUKCJI---------------------------------
 
