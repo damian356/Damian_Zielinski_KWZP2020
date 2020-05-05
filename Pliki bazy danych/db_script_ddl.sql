@@ -17,7 +17,7 @@ Nazwisko varchar(50) not null,
 Nazwa_Firmy varchar(100) unique,  
 NIP varchar(10) UNIQUE,  
 Adres varchar(100) not null, 
-Odleglosc_km varchar(15) not null unique,
+Odleglosc_km varchar(15) not null,
 Telefon varchar(15) not null unique,  
 E_Mail varchar(50) not null unique 
 ); 
@@ -54,13 +54,13 @@ ID_Pensji int FOREIGN KEY REFERENCES Pensja(ID_Pensja)
 
 CREATE TABLE Rodzaj_Umowy ( 
 ID_Rodzaj_Umowy int IDENTITY (1,1) PRIMARY KEY,   
-Rodzaj_Umowy varchar(30) not null unique,  
+Rodzaj_Umowy varchar(30) not null,  
 Uwagi varchar(100) 
 );  
 
 CREATE TABLE Etat ( 
 ID_Etat int IDENTITY (1,1) PRIMARY KEY,  
-Wymiar_Etatu varchar(5) not null unique,  
+Wymiar_Etatu varchar(5) not null,  
 Uwagi varchar(100) 
 ); 
 
@@ -104,7 +104,7 @@ Koniec_umowy DATE not null default GETDATE(),
 
 CREATE TABLE Jezyk ( 
 ID_Jezyk int IDENTITY (1,1) PRIMARY KEY,  
-Jezyk varchar(40) not null unique,  
+Jezyk varchar(40) not null,  
 Informacje_Dodatkowe varchar(200) not null 
 ); 
 
@@ -132,7 +132,7 @@ CREATE TABLE Faktury_Zewnetrzne (
 ID_Faktura_zewnetrzna int IDENTITY (1,1) PRIMARY KEY, 
 Nr_Faktury real not null, 
 ID_Grupa int FOREIGN KEY REFERENCES Grupa(ID_Grupa), 
-Nazwa_Firmy varchar(100) unique, 
+Nazwa_Firmy varchar(100), 
 Netto real not null, 
 Brutto real not null, 
 Podatek real not null, 
