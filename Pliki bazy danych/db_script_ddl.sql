@@ -1,9 +1,9 @@
 USE master
-DROP DATABASE Szwalnia1
+DROP DATABASE Szwalnia111
 GO
-CREATE DATABASE Szwalnia1
+CREATE DATABASE Szwalnia111
 GO
-USE	Szwalnia1
+USE	Szwalnia111
 
 CREATE TABLE Rodzaj_Etapu  
 (ID_Etapu int IDENTITY(1,1) PRIMARY KEY, 

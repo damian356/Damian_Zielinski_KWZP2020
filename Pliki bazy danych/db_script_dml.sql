@@ -1,5 +1,5 @@
 
-USE Szwalnia1
+USE Szwalnia111
 
 -------------------------------Inserty zarz¹dzanie i finanse-------------------------
 INSERT INTO Rodzaj_Etapu (Nazwa)
@@ -704,7 +704,6 @@ VALUES
 (16,8);
 
 
-
 INSERT INTO Rodzaj_Maszyny (Rodzaj_Maszyny,Koszt_Rbh)
 VALUES
 
@@ -864,9 +863,9 @@ VALUES
 (1,3,10),	--szycie
 (1,4,3),	--wszycie metki
 (1,5,6),	--pranie
-(1,8,3),	--guzikowanie
-(1,9,1),	--pakowanie
-(1,10,1),	--metkowanie
+(1,7,3),	--guzikowanie	--FILO
+(1,8,1),	--pakowanie		--FILO	
+(1,9,1),	--metkowanie	--FILO analgoicznie dla pozosta³ych
 
 --2 proces	100 spodni
 
@@ -876,9 +875,9 @@ VALUES
 (2,4,6),	--wszycie metki
 (2,10,3),	--wszywanie suwakow
 (2,5,3),	--pranie
-(2,8,2),	--guzikowanie
-(2,9,2),	--pakowanie
-(2,10,1),	--metkowanie
+(2,7,2),	--guzikowanie
+(2,8,2),	--pakowanie
+(2,9,1),	--metkowanie
 
 --3 proces 500 rekawiczek
 
@@ -886,8 +885,8 @@ VALUES
 (3,2,3),	--prasowanie
 (3,3,2),	--szycie
 (3,5,2),	--pranie
-(3,9,2),	--pakowanie
-(3,10,1),	--metkowanie
+(3,8,2),	--pakowanie
+(3,9,1),	--metkowanie
 
 --4 proces	100 bluz
 
@@ -896,8 +895,8 @@ VALUES
 (4,3,4),	--szycie
 (4,4,1),	--wszycie metki
 (4,5,2),	--pranie
-(4,9,1),	--pakowanie
-(4,10,1),	--metkowanie
+(4,7,1),	--pakowanie
+(4,8,1),	--metkowanie
 
 --5 proces	100	koszul
 
@@ -907,8 +906,8 @@ VALUES
 (5,4,3),	--wszycie metki
 (5,5,3),	--pranie
 (5,8,1),	--guzikowanie
-(5,9,1),	--pakowanie
-(5,10,1),	--metkowanie
+(5,8,1),	--pakowanie
+(5,9,1),	--metkowanie
 
 --6 proces	5000 kurtków
 
@@ -918,9 +917,9 @@ VALUES
 (6,4,4),	--wszycie metki
 (6,10,9),	--wszywanie suwakow
 (6,5,11),	--pranie
-(6,8,2),	--guzikowanie
-(6,9,3),	--pakowanie
-(6,10,3),	--metkowanie
+(6,7,2),	--guzikowanie
+(6,8,3),	--pakowanie
+(6,9,3),	--metkowanie
 
 --7 proces 50 rekawiczek
 
@@ -929,8 +928,8 @@ VALUES
 (7,3,4),	--szycie
 (7,4,1),	--wszycie metki
 (7,5,2),	--pranie
-(7,9,1),	--pakowanie
-(7,10,1),	--metkowanie
+(7,8,1),	--pakowanie
+(7,9,1),	--metkowanie
 
 --8 proces	50 bluz
 
@@ -939,8 +938,8 @@ VALUES
 (8,3,4),	--szycie
 (8,4,2),	--wszycie metki
 (8,5,4),	--pranie
-(8,9,2),	--pakowanie
-(8,10,1);	--metkowanie
+(8,8,2),	--pakowanie
+(8,9,1);	--metkowanie
 	
 	---------------------Inserty Produkcja-------------------------
 
