@@ -1,5 +1,5 @@
 
-USE Szwalnia1
+USE Szwalnia
 
 -------------------------------Inserty zarz¹dzanie i finanse-------------------------
 INSERT INTO Rodzaj_Etapu (Nazwa)
@@ -257,7 +257,12 @@ VALUES
 	('Opakowania', 0),
 	('Gumka', 0),
 	('Polfabrykat', 1),
-	('Ubrania', 1)
+	('Koszula',1),
+	('Spodnie',1),
+	('Rekawiczki',1),
+	('Kurtka',1),
+	('Bluza',1),
+	('Suwak',1)
 
 INSERT INTO 
 	Elementy_Jednostki (Jednostka)
@@ -416,7 +421,13 @@ VALUES
 	(1,'Igla do dzianin',0),
 	(1,'Kolo pasowe',0),
 	(5,'Karton klapowy',0),
-	(5,'Foliopaki',48)
+	(5,'Foliopaki',48),
+	(8,'Koszula',0),
+	(9,'Spodnie',0),
+	(10,'Rekawiczki',0),
+	(11,'Kurtka',0),
+	(12,'Bluza',0),
+	(13,'Suwak',0)
 	-- 12 koszula
 	-- 13 spodnie
 	-- 14 rekawiczki

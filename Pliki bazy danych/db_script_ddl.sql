@@ -1,9 +1,9 @@
 USE master
-DROP DATABASE Szwalnia1
+DROP DATABASE Szwalnia
 GO
-CREATE DATABASE Szwalnia1
+CREATE DATABASE Szwalnia
 GO
-USE	Szwalnia1
+USE	Szwalnia
 
 CREATE TABLE Rodzaj_Etapu  
 (ID_Etapu int IDENTITY(1,1) PRIMARY KEY, 
@@ -33,10 +33,10 @@ Nazwa varchar(50) not null,
 Producent varchar(50) not null,
 Numer_seryjny varchar(50) not null, 
 ID_Dzialu  int FOREIGN KEY REFERENCES Dzialy(ID_Dzialu) ,
-Koszt_zakupu varchar(10) UNIQUE,  
+Koszt_zakupu varchar(10),  
 Roczny_stopien_amortyzacji varchar(100) not null, 
 Gwarancja DATE not null default GETDATE(),  
-Zamortyzowane BIT not null unique 
+Zamortyzowane BIT not null
 ); 
 
 CREATE TABLE Pensja ( 
