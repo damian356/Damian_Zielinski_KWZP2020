@@ -1,4 +1,5 @@
-USE Szwalnia
+
+USE Szwalnia1
 
 -------------------------------Inserty zarz¹dzanie i finanse-------------------------
 INSERT INTO Rodzaj_Etapu (Nazwa)
@@ -416,6 +417,12 @@ VALUES
 	(1,'Kolo pasowe',0),
 	(5,'Karton klapowy',0),
 	(5,'Foliopaki',48)
+	-- 12 koszula
+	-- 13 spodnie
+	-- 14 rekawiczki
+	-- 15 kurtka
+	-- 16 bluza
+	-- 17 suwak
 INSERT INTO 
 	Elementy_Cechy (ID_Element,ID_Cecha,Wartosc_Cechy_Liczbowa,ID_Jednostka,Wartosc_Cechy_Slowna)
 VALUES
@@ -608,62 +615,98 @@ VALUES --ID_miejsca 6 to wysylka, 2 to produkcja
 ------Dodatokowy insert zarz¹dzanie---
 INSERT INTO Zamowienie_Element (ID_Zamowienia, ID_Element, Ilosc, Licz_do_zamowienia)
 VALUES
-('1','1','100','0'),
-('1','3','100','0'),
-('2','5','500','0'),
-('4','7','5000','0'),
-('3','1','100','0'),
-('3','4','100','0'),
-('5','6','50','0'),
-('5','7','50','0');
 
-	----------------------------------- INSERTY PRZYGOTOANIE PRODUKCJI---------------------------------
+('1','12','100','0'), -- FILO pozmienialem zamowione elementy, poniewaz klient nie chce szyc lozysk :), usunac komentazr
+('1','13','100','0'),
+('2','14','500','0'),
+('4','15','5000','0'),
+('3','16','100','0'),
+('3','12','100','0'),
+('5','14','50','0'),
+('5','16','50','0');
+
+-------------------------------------- INSERTY PRZYGOTOANIE PRODUKCJI---------------------------------
 
 INSERT INTO Rodzaj_Dokumentacji(Nazwa)
 VALUES
+
 ('Kod na wycinarkê'),
 ('Dokumentacja 2D');
 
 INSERT INTO Dokumentacje(ID_Rodzaj_Dokumentacji,ID_Pracownika,Data_Wykonania,Plik)
 VALUES
-(2,17,2020-03-01,'lokalizacja'),
-(1,13,2020-03-06,'lokalizacja'),
-(2,18,2020-03-16,'lokalizacja'),
-(1,14,2020-04-01,'lokalizacja'),
-(1,13,2020-04-10,'lokalizacja'),
-(2,18,2020-05-11,'lokalizacja');
 
-INSERT INTO Dokumentacja_proces(ID_Dokumentacji)
+--1 zamowienie
+(1,13,'2020-04-10','lokalizacja'),
+(2,17,'2020-04-10','lokalizacja'),
+(1,14,'2020-04-10','lokalizacja'),
+(2,17,'2020-04-10','lokalizacja'),
+--2 zamowienie
+(1,13,'2020-04-20','lokalizacja'),
+(2,18,'2020-04-20','lokalizacja'),
+--3 zamowienie
+(1,13,'2020-04-14','lokalizacja'),
+(2,18,'2020-04-14','lokalizacja'),
+(1,14,'2020-04-14','lokalizacja'),
+(2,17,'2020-04-14','lokalizacja'),
+--4 zamowienie
+(1,13,'2020-04-18','lokalizacja'),
+(2,18,'2020-04-18','lokalizacja'),
+--5 zamowienie
+(1,14,'2020-04-20','lokalizacja'),
+(2,18,'2020-04-20','lokalizacja'),
+(1,14,'2020-04-20','lokalizacja'),
+(2,17,'2020-04-20','lokalizacja');
+
+INSERT INTO Dokumentacja_proces(ID_Dokumentacji,ID_Proces_Technologiczny)
 VALUES
-(1),
-(2),
-(3),
-(4),
-(3),
-(5),
-(5),
-(6);
+
+--1 zamowienie
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+--2 zamowienie
+(5,2),
+(6,2),
+--3 zamowienie
+(7,3),
+(8,3),
+(9,3),
+(10,3),
+--4 zamowienie
+(11,4),
+(12,4),
+--5 zamowienie
+(13,5),
+(14,5),
+(15,5),
+(16,5);
 
 INSERT into Proces_Technologiczny(ID_Dokumentacja_Proces,ID_Pracownika)
 VALUES
-(1,13),
-(3,14),
+
+(1,13), 
 (2,14),
-(4,14),
+(3,14), 
 (4,13),
-(1,13);
+(5,14), 
+(6,13), 
+(7,13), 
+(8,14); 
 
 INSERT INTO Rodzaj_Maszyny (Rodzaj_Maszyny,Koszt_Rbh)
 VALUES
+
 ('Maszyna_Do_Szycia',60),
 ('Wycinarka_Laserowa',70),
 ('Pralka',80),
 ('Suszarka',90),
-('Maszyna_Do_Prasowania',100),
-('¯elazko',50);
+('Maszyna_Do_Prasowania',100);
 
 INSERT INTO Maszyny (ID_Srodki_Trwale,ID_Rodzaj_Maszyny,Resurs_Rbh,Serwis_Co_Ile)
 VALUES
+
 (9,2,1000,60),
 (10,2,1000,60),
 (11,2,1000,60),
@@ -686,11 +729,13 @@ VALUES
 
 INSERT INTO Rodzaj_Obslugi(Nazwa)
 VALUES
+
 ('Serwis'),
 ('Naprawa');
 
 INSERT INTO Obsluga_Techniczna (ID_Maszyny,ID_Rodzaj_Obslugi,Data_Wykonania,ID_Pracownika)
 VALUES
+
 (1,2,'2020-04-22',15),
 (10,1,'2020-04-27',16),
 (11,1,'2020-04-02',16),
@@ -700,7 +745,8 @@ VALUES
 
 INSERT into Czesci_Obsluga(ID_Obsluga_Techniczna,ID_Element,Liczba)
 VALUES
-(1,1,2),
+
+(1,2,3),
 (1,6,2),
 (2,7,1),
 (3,1,3),
@@ -714,92 +760,180 @@ VALUES
 
 INSERT INTO Maszyny_Proces(ID_Proces_Technologiczny,ID_Rodzaj_Maszyny,Liczba_Maszyn,Liczba_Rbh_Maszyna)
 VALUES
-(1,1,3,240),
-(1,2,1,40),
-(1,3,1,80),
-(1,4,1,40),
-(1,5,1,30),
-(2,1,2,120),
-(2,2,1,20),
-(2,3,1,60),
-(2,4,1,30),
-(2,5,1,15),
-(3,1,5,500),
-(3,2,1,80),
-(3,3,2,160),
-(3,4,2,100);
+
+--1 proces
+
+(1,1,3,16), --szycie + wszycie metków i guzików
+(1,5,4,3),	--prasowanie
+(1,3,3,6),	--pranie 
+(1,2,2,4),	--wycinanie
+
+--2 proces
+
+(2,1,3,13),
+(2,5,4,2),
+(2,3,3,3),
+(2,2,3,2),
+
+--3 proces
+
+(3,1,3,7), 
+(3,5,4,3),	
+(3,3,3,2),	
+(3,2,2,2),	
+
+--4 proces
+
+(4,1,3,8), 
+(4,5,4,3),	
+(4,3,3,2),	 
+(4,2,2,2),	
+
+--5 proces
+
+(5,1,3,7), 
+(5,5,4,2),	
+(5,3,3,3),	 
+(5,2,2,2),	
+
+--6 proces
+
+(6,1,3,25), 
+(6,5,4,7),	
+(6,3,3,11),
+(6,2,2,4),
+
+--7 proces
+
+(7,1,3,5), 
+(7,5,4,2),	
+(7,3,3,2),	 
+(7,2,2,2),	
+
+--8 proces
+
+(8,1,3,6), 
+(8,5,4,3),	
+(8,3,3,4),	
+(8,2,2,2);	
 
 INSERT INTO Proces_Zamowienie(ID_Proces_Technologiczny,ID_Zamowienie_Element,Kompletny_Proces)
 VALUES
+
 (1,1,1),
-(2,2,1),
-(3,3,1),
-(4,4,1),
-(5,5,1),
-(6,6,1);
+(2,1,1),
+(3,2,1),
+(4,3,1),
+(5,3,1),
+(6,4,1),
+(7,5,1),
+(8,5,1);
 
 INSERT INTO Elementy_Proces(ID_Proces_Technologiczny,ID_Element,Liczba)
 VALUES
-(1,2,15),
-(1,4,30),
-(2,2,20),
-(3,3,33),
-(3,4,40),
-(4,2,50),
-(5,2,30),
-(6,2,50),
-(6,4,15);
 
-INSERT INTO Etapy_W_Procesie (ID_Proces_Technologiczny,ID_Etapu,Czas)
+(1,2,50),
+(1,4,1000),
+(2,3,120),
+(2,4,200),
+(3,3,70),
+(4,2,400),
+(5,2,50),
+(5,4,1000),
+(6,3,20000),
+(6,4,5000),
+(7,3,140),
+(8,3,35);
+
+INSERT INTO Etapy_W_Procesie (ID_Proces_Technologiczny,ID_Etapu,Czas)--(Czas w h)
 VALUES
-(1,1,1),
-(1,2,2),
-(1,3,3),
-(1,4,4),
-(1,5,5),
-(1,6,5),
-(1,7,5),
-(1,8,5),
-(1,9,5),
-(1,10,5),
-(2,1,1),
-(2,2,2),
-(2,3,3),
-(2,5,5),
-(2,8,5),
-(3,1,1),
-(3,2,2),
-(3,3,3),
-(3,4,4),
-(3,5,5),
-(3,6,5),
-(3,7,5),
-(3,8,5),
-(3,9,5),
-(3,10,5),
-(4,1,1),
-(4,2,2),
-(4,3,3),
-(4,5,5),
-(4,8,5),
-(5,1,1),
-(5,2,2),
-(5,3,3),
-(5,4,4),
-(5,5,5),
-(5,6,5),
-(5,7,5),
-(5,8,5),
-(5,9,5),
-(5,10,5),
-(6,1,10),
-(6,2,2),
-(6,3,5),
-(6,7,10),
-(6,10,10);
-	
+--1 proces	100 koszul
 
+(1,1,4),	--ciecie
+(1,2,3),	--prasowanie
+(1,3,10),	--szycie
+(1,4,3),	--wszycie metki
+(1,5,6),	--pranie
+(1,8,3),	--guzikowanie
+(1,9,1),	--pakowanie
+(1,10,1),	--metkowanie
+
+--2 proces	100 spodni
+
+(2,1,5),	--ciecie
+(2,2,2),	--prasowanie
+(2,3,4),	--szycie
+(2,4,6),	--wszycie metki
+(2,11,3),	--wszywanie suwakow
+(2,5,3),	--pranie
+(2,8,2),	--guzikowanie
+(2,9,2),	--pakowanie
+(2,10,1),	--metkowanie
+
+--3 proces 500 rekawiczek
+
+(3,1,2),	--ciecie
+(3,2,3),	--prasowanie
+(3,3,2),	--szycie
+(3,5,2),	--pranie
+(3,9,2),	--pakowanie
+(3,10,1),	--metkowanie
+
+--4 proces	100 bluz
+
+(4,1,2),	--ciecie
+(4,2,3),	--prasowanie
+(4,3,4),	--szycie
+(4,4,1),	--wszycie metki
+(4,5,2),	--pranie
+(4,9,1),	--pakowanie
+(4,10,1),	--metkowanie
+
+--5 proces	100	koszul
+
+(5,1,2),	--ciecie
+(5,2,2),	--prasowanie
+(5,3,3),	--szycie
+(5,4,3),	--wszycie metki
+(5,5,3),	--pranie
+(5,8,1),	--guzikowanie
+(5,9,1),	--pakowanie
+(5,10,1),	--metkowanie
+
+--6 proces	5000 kurtków
+
+(6,1,4),	--ciecie
+(6,2,7),	--prasowanie
+(6,3,10),	--szycie
+(6,4,4),	--wszycie metki
+(6,11,9),	--wszywanie suwakow
+(6,5,11),	--pranie
+(6,8,2),	--guzikowanie
+(6,9,3),	--pakowanie
+(6,10,3),	--metkowanie
+
+--7 proces 50 rekawiczek
+
+(7,1,2),	--ciecie
+(7,2,2),	--prasowanie
+(7,3,4),	--szycie
+(7,4,1),	--wszycie metki
+(7,5,2),	--pranie
+(7,9,1),	--pakowanie
+(7,10,1),	--metkowanie
+
+--8 proces	50 bluz
+
+(8,1,2),	--ciecie
+(8,2,3),	--prasowanie
+(8,3,4),	--szycie
+(8,4,2),	--wszycie metki
+(8,5,4),	--pranie
+(8,9,2),	--pakowanie
+(8,10,1);	--metkowanie
+	
 	---------------------Inserty Produkcja-------------------------
+
 INSERT INTO Proces_Produkcyjny ( ID_Zamowienie_Element, Proponowana_data_dostawy_materialu, ID_Dostarczenia, Data_Rozpoczecia, Data_Zakonczenia, Uwagi )
 VALUES
 (1, '2020-04-12 06:00:00', 1, '2020-04-12 09:21:15', '2020-04-14 19:00:00',  'brak uwag'),
@@ -871,3 +1005,7 @@ VALUES
 (4, '2020-04-21 13:15:00', 'dok_4.img', 'brak uwag', 1, 280),
 (5, '2020-04-23 21:40:00', 'dok_4.img', 'brak uwag', 1, 103);
 use master
+
+
+
+

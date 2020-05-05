@@ -1,9 +1,9 @@
 USE master
-DROP DATABASE Szwalnia
+DROP DATABASE Szwalnia1
 GO
-CREATE DATABASE Szwalnia
+CREATE DATABASE Szwalnia1
 GO
-USE Szwalnia
+USE	Szwalnia1
 
 CREATE TABLE Rodzaj_Etapu  
 (ID_Etapu int IDENTITY(1,1) PRIMARY KEY, 
@@ -403,9 +403,10 @@ create table Dokumentacje (
 ); 
 
 create table Dokumentacja_Proces ( 
-    ID_Dokumentacja_Proces int IDENTITY(1,1) not null PRIMARY KEY,  
-    ID_Dokumentacji int not null FOREIGN KEY REFERENCES Dokumentacje (ID_Dokumentacji), 
-); 
+    ID_Dokumentacja_Proces int IDENTITY(1,1) not null PRIMARY KEY, 
+	ID_Dokumentacji int not null FOREIGN KEY REFERENCES Dokumentacje (ID_Dokumentacji),
+    ID_Proces_Technologiczny int not null,-- FOREIGN KEY REFERENCES Proces_Technologiczny (ID_Proces_Technologiczny),
+);  
 
 create table Proces_Technologiczny ( 
     ID_Proces_Technologiczny int IDENTITY(1,1) not null PRIMARY KEY, 
@@ -550,12 +551,7 @@ FROM            dbo.Polki INNER JOIN
                          dbo.Elementy_Jednostki ON dbo.Oferta.ID_Jednostka = dbo.Elementy_Jednostki.ID_jednostka INNER JOIN
                          dbo.Polki_regaly ON dbo.Polki.ID_Polka = dbo.Polki_regaly.ID_Polka INNER JOIN
                          dbo.Regaly ON dbo.Polki_regaly.ID_Regal = dbo.Regaly.ID_Regal
-
-
 GO
-
-
-
 
 CREATE VIEW vRealizacjaProcesuProdukcyjnegoDetails 
 AS
@@ -567,4 +563,3 @@ FROM     dbo.Realizacja_Procesu INNER JOIN
 				  
 				  
 GO
-
