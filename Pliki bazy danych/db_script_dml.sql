@@ -624,14 +624,14 @@ VALUES --ID_miejsca 6 to wysylka, 2 to produkcja
 INSERT INTO Zamowienie_Element (ID_Zamowienia, ID_Element, Ilosc, Licz_do_zamowienia)
 VALUES
 
-('1','2','100','0'), -- FILO pozmienialem zamowione elementy, poniewaz klient nie chce szyc lozysk :), usunac komentazr
-('1','3','100','0'),
-('2','4','500','0'),
-('4','5','5000','0'),
-('3','6','100','0'),
-('3','2','100','0'),
-('5','4','50','0'),
-('5','6','50','0');
+('1','12','100','0'), -- FILO pozmienialem zamowione elementy, poniewaz klient nie chce szyc lozysk :), usunac komentazr
+('1','13','100','0'),
+('2','14','500','0'),
+('4','15','5000','0'),
+('3','16','100','0'),
+('3','12','100','0'),
+('5','14','50','0'),
+('5','16','50','0');
 
 -------------------------------------- INSERTY PRZYGOTOANIE PRODUKCJI---------------------------------
 
