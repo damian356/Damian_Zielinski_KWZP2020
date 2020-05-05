@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Database_inserts"
+    "\\Database_inserts",
+    "\\Pliki bazy danych"
   ],
+  "SelectedNode": "\\Pliki bazy danych\\db_script_dml.sql",
   "PreviewInSolutionExplorer": false
 }
