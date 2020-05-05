@@ -130,12 +130,12 @@ Nazwa varchar(100) unique
 
 CREATE TABLE Faktury_Zewnetrzne ( 
 ID_Faktura_zewnetrzna int IDENTITY (1,1) PRIMARY KEY, 
-Nr_Faktury real not null, 
+Nr_Faktury varchar(100) not null, 
 ID_Grupa int FOREIGN KEY REFERENCES Grupa(ID_Grupa), 
-Nazwa_Firmy varchar(100), 
-Netto real not null, 
-Brutto real not null, 
-Podatek real not null, 
+Nazwa_Firmy varchar(100) not null, 
+Netto varchar(100) not null, 
+Brutto varchar(100) not null, 
+Podatek varchar(100) not null, 
 ); 
 
 --------------------------------------------------------- MAGAZYN--------------------------------------------------------- 
