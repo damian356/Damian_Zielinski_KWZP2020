@@ -168,7 +168,7 @@ VALUES
 INSERT into Zamowienia(ID_Klienta, Data_Zlozenia, Data_Zakonczenia, Umowa, ID_Pracownika)
 VALUES
 ('1','2020-04-10','2020-04-15','1', '7'),
-('2','2020-04-11','2020-04-20','1', '7'),
+('2','2020-04-13','2020-04-20','1', '7'),
 ('3','2020-04-14','2020-04-21','1', '7'),
 ('4','2020-04-18','2020-04-22','1', '8'),
 ('5','2020-04-20','2020-04-24','1', '8');
@@ -195,33 +195,33 @@ VALUES
 
 INSERT INTO Srodki_Trwale (Nazwa, Producent, Numer_seryjny, ID_Dzialu, Koszt_zakupu, Roczny_stopien_amortyzacji, Gwarancja, Zamortyzowane)
 VALUES
-('Laptop','Asus','VDA14586', '1', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA14444', '1', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA54896', '2', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA57892', '2', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA23696', '4', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA33365', '4', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA23569', '4', '5600', '20','2022-05-22', '0'),
-('Laptop','Asus','VDA23589', '1', '5600', '20','2022-05-22', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34KA1123', '3', '105000', '14','2024-10-10', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34RO4589', '3', '105000', '14','2024-10-10', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34HA1145', '3', '105000', '14','2024-10-10', '0'),
-('Maszyna Laserowa','Perfect Laser','FRA34WU5568', '3', '105000', '14','2024-10-10', '0'),
-('MAszyna Do Szycia','Janome','W186', '3', '5500', '14','2026-05-01', '0'),
-('MAszyna Do Szycia','Janome','W189', '3', '5500', '14','2026-05-01', '0'),
-('MAszyna Do Szycia','Janome','W199', '3', '5500', '14','2026-05-01', '0'),
-('MAszyna Do Szycia','Janome','W253', '3', '5500', '14','2026-05-01', '0'),
-('MAszyna Do Szycia','ㄆcznik','A456VB', '3', '6200', '14','2026-05-01', '0'),
-('MAszyna Do Szycia','ㄆcznik','AA45GH', '3', '6200', '14','2026-05-01', '0'),
-('MAszyna Do Szycia','ㄆcznik','ATY45A', '3', '6200', '14','2026-05-01', '0'),
-('Pralka','Whirpool','B56/456', '3', '8000', '14','2027-10-01', '0'),
-('Pralka','Whirpool','B56/678', '3', '8000', '14','2027-10-01', '0'),
-('Pralka','Whirpool','B56/678', '3', '8000', '14','2027-10-01', '0'),
-('Pralka','Whirpool','B56/345', '3', '8000', '14','2027-10-01', '0'),
-('疾lasko przemys這we','Bosh','MD2/125/2019', '3', '4500', '14','2025-04-12', '0'),
-('疾lasko przemys這we','Bosh','MD2/225/2019', '3', '4500', '14','2025-04-12', '0'),
-('疾lasko przemys這we','Bosh','MD2/199/2019', '3', '4500', '14','2025-04-12', '0'),
-('疾lasko przemys這we','Bosh','MD2/198/2019', '3', '4500', '14','2025-04-12', '0');
+('Laptop','Asus','VDA14586', 1, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA14444', 1, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA54896', 2, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA57892', 2, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA23696', 4, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA33365', 4, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA23569', 4, '5600', '20','2022-05-22', '0'),
+('Laptop','Asus','VDA23589', 1, '5600', '20','2022-05-22', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34KA1123', 3, '105000', '14','2024-10-10', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34RO4589', 3, '105000', '14','2024-10-10', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34HA1145', 3, '105000', '14','2024-10-10', '0'),
+('Maszyna Laserowa','Perfect Laser','FRA34WU5568', 3, '105000', '14','2024-10-10', '0'),
+('MAszyna Do Szycia','Janome','W186', 3, '5500', '14','2026-05-01', '0'),
+('MAszyna Do Szycia','Janome','W189', 3, '5500', '14','2026-05-01', '0'),
+('MAszyna Do Szycia','Janome','W199', 3, '5500', '14','2026-05-01', '0'),
+('MAszyna Do Szycia','Janome','W253', 3, '5500', '14','2026-05-01', '0'),
+('MAszyna Do Szycia','ㄆcznik','A456VB', 3, '6200', '14','2026-05-01', '0'),
+('MAszyna Do Szycia','ㄆcznik','AA45GH', 3, '6200', '14','2026-05-01', '0'),
+('MAszyna Do Szycia','ㄆcznik','ATY45A', 3, '6200', '14','2026-05-01', '0'),
+('Pralka','Whirpool','B56/456', 3, '8000', '14','2027-10-01', '0'),
+('Pralka','Whirpool','B56/678', 3, '8000', '14','2027-10-01', '0'),
+('Pralka','Whirpool','B56/678', 3, '8000', '14','2027-10-01', '0'),
+('Pralka','Whirpool','B56/345', 3, '8000', '14','2027-10-01', '0'),
+('疾lasko przemys這we','Bosh','MD2/125/2019', 3, '4500', '14','2025-04-12', '0'),
+('疾lasko przemys這we','Bosh','MD2/225/2019', 3, '4500', '14','2025-04-12', '0'),
+('疾lasko przemys這we','Bosh','MD2/199/2019', 3, '4500', '14','2025-04-12', '0'),
+('疾lasko przemys這we','Bosh','MD2/198/2019', 3, '4500', '14','2025-04-12', '0');
 
 ---------------------INSERTY MAGAZYN---------------------------------------------------------
 INSERT INTO
@@ -257,12 +257,14 @@ VALUES
 	('Opakowania', 0),
 	('Gumka', 0),
 	('Polfabrykat', 1),
-	('Koszula',1),
-	('Spodnie',1),
+	('Koszula', 1),
+	('Spodnie', 1),
 	('Rekawiczki',1),
-	('Kurtka',1),
-	('Bluza',1),
-	('Suwak',1)
+	('Kurtka', 1),
+	('Bluza', 1),
+	('Suwak', 0);
+
+
 
 INSERT INTO 
 	Elementy_Jednostki (Jednostka)
@@ -406,7 +408,7 @@ VALUES
 	(7,6),
 	(7,7),
 	(8,6),
-	(8,7)
+	(8,7);
 
 INSERT INTO
 	Elementy (ID_Element_Typ,Element_Nazwa,Okres_Przydatnosci_Miesiace)
@@ -422,12 +424,12 @@ VALUES
 	(1,'Kolo pasowe',0),
 	(5,'Karton klapowy',0),
 	(5,'Foliopaki',48),
-	(8,'Koszula',0),
-	(9,'Spodnie',0),
-	(10,'Rekawiczki',0),
-	(11,'Kurtka',0),
-	(12,'Bluza',0),
-	(13,'Suwak',0)
+	(8,'Koszula w paski',0),
+	(9,'Spodnie czerwone z kropkami',0),
+	(10,'Rekawiczki w paski',0),
+	(11,'Kurtka z kieszonka',0),
+	(12,'Bluza z kapturem',0),
+	(13,'Suwak',0);
 
 INSERT INTO 
 	Elementy_Cechy (ID_Element,ID_Cecha,Wartosc_Cechy_Liczbowa,ID_Jednostka,Wartosc_Cechy_Slowna)
@@ -622,16 +624,14 @@ VALUES --ID_miejsca 6 to wysylka, 2 to produkcja
 INSERT INTO Zamowienie_Element (ID_Zamowienia, ID_Element, Ilosc, Licz_do_zamowienia)
 VALUES
 
-('1','12','100','0'), -- FILO pozmienialem zamowione elementy, poniewaz klient nie chce szyc lozysk :), usunac komentazr
-('1','13','100','0'),
-('2','14','500','0'),
-('4','15','5000','0'),
-('3','16','100','0'),
-('3','12','100','0'),
-('5','14','50','0'),
-('5','16','50','0');
-
-
+('1','2','100','0'), -- FILO pozmienialem zamowione elementy, poniewaz klient nie chce szyc lozysk :), usunac komentazr
+('1','3','100','0'),
+('2','4','500','0'),
+('4','5','5000','0'),
+('3','6','100','0'),
+('3','2','100','0'),
+('5','4','50','0'),
+('5','6','50','0');
 
 -------------------------------------- INSERTY PRZYGOTOANIE PRODUKCJI---------------------------------
 
@@ -650,8 +650,8 @@ VALUES
 (1,14,'2020-04-10','lokalizacja'),
 (2,17,'2020-04-10','lokalizacja'),
 --2 zamowienie
-(1,13,'2020-04-20','lokalizacja'),
-(2,18,'2020-04-20','lokalizacja'),
+(1,13,'2020-04-13','lokalizacja'),
+(2,18,'2020-04-13','lokalizacja'),
 --3 zamowienie
 (1,13,'2020-04-14','lokalizacja'),
 (2,18,'2020-04-14','lokalizacja'),
@@ -666,42 +666,44 @@ VALUES
 (1,14,'2020-04-20','lokalizacja'),
 (2,17,'2020-04-20','lokalizacja');
 
+INSERT into Proces_Technologiczny(ID_Pracownika)
+VALUES
+
+(13), 
+(14),
+(14), 
+(13),
+(14), 
+(13), 
+(13), 
+(14); 
+
 INSERT INTO Dokumentacja_proces(ID_Dokumentacji,ID_Proces_Technologiczny)
 VALUES
 
 --1 zamowienie
 (1,1),
 (2,1),
-(3,1),
-(4,1),
+(3,2),
+(4,2),
 --2 zamowienie
-(5,2),
-(6,2),
+(5,3),
+(6,3),
 --3 zamowienie
-(7,3),
-(8,3),
-(9,3),
-(10,3),
+(7,4),
+(8,4),
+(9,5),
+(10,5),
 --4 zamowienie
-(11,4),
-(12,4),
+(11,6),
+(12,6),
 --5 zamowienie
-(13,5),
-(14,5),
-(15,5),
-(16,5);
+(13,7),
+(14,7),
+(15,8),
+(16,8);
 
-INSERT into Proces_Technologiczny(ID_Dokumentacja_Proces,ID_Pracownika)
-VALUES
 
-(1,13), 
-(2,14),
-(3,14), 
-(4,13),
-(5,14), 
-(6,13), 
-(7,13), 
-(8,14); 
 
 INSERT INTO Rodzaj_Maszyny (Rodzaj_Maszyny,Koszt_Rbh)
 VALUES
@@ -730,10 +732,10 @@ VALUES
 (21,3,2000,50),
 (22,3,2000,50),
 (23,3,2000,50),
-(24,6,3000,80),
-(25,6,3000,80),
-(26,6,3000,80),
-(27,6,3000,80);
+(24,5,3000,80),
+(25,5,3000,80),
+(26,5,3000,80),
+(27,5,3000,80);
 
 INSERT INTO Rodzaj_Obslugi(Nazwa)
 VALUES
@@ -829,13 +831,13 @@ INSERT INTO Proces_Zamowienie(ID_Proces_Technologiczny,ID_Zamowienie_Element,Kom
 VALUES
 
 (1,1,1),
-(2,1,1),
-(3,2,1),
-(4,3,1),
-(5,3,1),
-(6,4,1),
-(7,5,1),
-(8,5,1);
+(2,2,1),
+(3,3,1),
+(4,4,1),
+(5,5,1),
+(6,6,1),
+(7,7,1),
+(8,8,1);
 
 INSERT INTO Elementy_Proces(ID_Proces_Technologiczny,ID_Element,Liczba)
 VALUES
@@ -872,7 +874,7 @@ VALUES
 (2,2,2),	--prasowanie
 (2,3,4),	--szycie
 (2,4,6),	--wszycie metki
-(2,11,3),	--wszywanie suwakow
+(2,10,3),	--wszywanie suwakow
 (2,5,3),	--pranie
 (2,8,2),	--guzikowanie
 (2,9,2),	--pakowanie
@@ -914,7 +916,7 @@ VALUES
 (6,2,7),	--prasowanie
 (6,3,10),	--szycie
 (6,4,4),	--wszycie metki
-(6,11,9),	--wszywanie suwakow
+(6,10,9),	--wszywanie suwakow
 (6,5,11),	--pranie
 (6,8,2),	--guzikowanie
 (6,9,3),	--pakowanie
@@ -956,11 +958,11 @@ INSERT INTO Material_Na_Produkcji (ID_Procesu_Produkcyjnego, ID_Elementy_Proces,
 VALUES
 (1, 2, 0, 4, 1), 
 (1, 4, 1, 8, 1), 
-(2, 2, 1, 4, 1), 
+(2, 3, 1, 4, 1), 
 (3, 3, 2, 3, 1), 
-(3, 4, 0, 8, 1), 
 (4, 2, 3, 4, 1), 
 (5, 2, 0, 4, 1); 
+
 
 
 INSERT INTO Realizacja_Procesu (ID_Procesu_Produkcyjnego, ID_Etapu, Data_Rozpoczecia_Procesu, Data_Zakonczenia_Procesu, Data_Kontroli, Uwagi_Kontroli)

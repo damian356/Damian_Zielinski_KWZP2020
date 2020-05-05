@@ -17,7 +17,7 @@ Nazwisko varchar(50) not null,
 Nazwa_Firmy varchar(100) unique,  
 NIP varchar(10) UNIQUE,  
 Adres varchar(100) not null, 
-Odleglosc_km varchar(15) not null,
+Odleglosc_km varchar(15) not null unique,
 Telefon varchar(15) not null unique,  
 E_Mail varchar(50) not null unique 
 ); 
@@ -36,7 +36,7 @@ ID_Dzialu  int FOREIGN KEY REFERENCES Dzialy(ID_Dzialu) ,
 Koszt_zakupu varchar(10) not null,  
 Roczny_stopien_amortyzacji varchar(100) not null, 
 Gwarancja DATE not null default GETDATE(),  
-Zamortyzowane BIT not null
+Zamortyzowane BIT not null  
 ); 
 
 CREATE TABLE Pensja ( 
@@ -54,13 +54,13 @@ ID_Pensji int FOREIGN KEY REFERENCES Pensja(ID_Pensja)
 
 CREATE TABLE Rodzaj_Umowy ( 
 ID_Rodzaj_Umowy int IDENTITY (1,1) PRIMARY KEY,   
-Rodzaj_Umowy varchar(30) not null,  
+Rodzaj_Umowy varchar(30) not null unique,  
 Uwagi varchar(100) 
 );  
 
 CREATE TABLE Etat ( 
 ID_Etat int IDENTITY (1,1) PRIMARY KEY,  
-Wymiar_Etatu varchar(5) not null,  
+Wymiar_Etatu varchar(5) not null unique,  
 Uwagi varchar(100) 
 ); 
 
@@ -75,11 +75,11 @@ Telefon varchar(15) not null unique
 
 CREATE TABLE Rodzaj_Urlopu (
 ID_Rodzaj_Urlopu int IDENTITY(1,1) Primary key, 
-Nazwa varchar(20) not null
+Nazwa varchar(20)not null
 );
  CREATE TABLE Wymiar_Urlopu (
 ID_Wymiar_Urlopu int IDENTITY(1,1) Primary key, 
-Iloœæ_dni varchar(20) not null
+Iloœæ_dni varchar(20)not null
 );
 
 CREATE TABLE Urlop ( 
@@ -104,7 +104,7 @@ Koniec_umowy DATE not null default GETDATE(),
 
 CREATE TABLE Jezyk ( 
 ID_Jezyk int IDENTITY (1,1) PRIMARY KEY,  
-Jezyk varchar(40) not null,  
+Jezyk varchar(40) not null unique,  
 Informacje_Dodatkowe varchar(200) not null 
 ); 
 
@@ -125,14 +125,14 @@ ID_Pracownika int FOREIGN KEY REFERENCES Pracownicy (ID_Pracownika),
 
 CREATE TABLE Grupa ( 
 ID_Grupa int IDENTITY (1,1) PRIMARY KEY, 
-Nazwa varchar(100) not null 
+Nazwa varchar(100) unique 
 ); 
 
 CREATE TABLE Faktury_Zewnetrzne ( 
 ID_Faktura_zewnetrzna int IDENTITY (1,1) PRIMARY KEY, 
 Nr_Faktury real not null, 
 ID_Grupa int FOREIGN KEY REFERENCES Grupa(ID_Grupa), 
-Nazwa_Firmy varchar(100) not null, 
+Nazwa_Firmy varchar(100) unique, 
 Netto real not null, 
 Brutto real not null, 
 Podatek real not null, 
@@ -154,7 +154,7 @@ Glebokosc int
 
 CREATE TABLE Elementy_Typy (
 ID_Element_Typ int IDENTITY(1,1) PRIMARY KEY,
-Typ varchar(15),
+Typ varchar(35),
 Czy_wlasne bit not null default 0
 )
 
@@ -224,7 +224,7 @@ ID_Element int IDENTITY(1,1) PRIMARY KEY,
 ID_Element_Typ int
 	FOREIGN KEY REFERENCES
 	Elementy_Typy (ID_Element_Typ),
-Element_Nazwa varchar(20),
+Element_Nazwa varchar(35),
 Okres_Przydatnosci_Miesiace int
 )
 
@@ -402,16 +402,15 @@ create table Dokumentacje (
 	Plik varchar(30) not null,
 ); 
 
+create table Proces_Technologiczny ( 
+    ID_Proces_Technologiczny int IDENTITY(1,1) not null PRIMARY KEY,
+    ID_Pracownika int not null FOREIGN KEY REFERENCES Pracownicy (ID_Pracownika), 
+);  
+
 create table Dokumentacja_Proces ( 
     ID_Dokumentacja_Proces int IDENTITY(1,1) not null PRIMARY KEY, 
 	ID_Dokumentacji int not null FOREIGN KEY REFERENCES Dokumentacje (ID_Dokumentacji),
-    ID_Proces_Technologiczny int not null,-- FOREIGN KEY REFERENCES Proces_Technologiczny (ID_Proces_Technologiczny),
-);  
-
-create table Proces_Technologiczny ( 
-    ID_Proces_Technologiczny int IDENTITY(1,1) not null PRIMARY KEY, 
-    ID_Dokumentacja_Proces int  not null FOREIGN KEY REFERENCES Dokumentacja_Proces (ID_Dokumentacja_Proces), 
-    ID_Pracownika int not null FOREIGN KEY REFERENCES Pracownicy (ID_Pracownika), 
+    ID_Proces_Technologiczny int not null FOREIGN KEY REFERENCES Proces_Technologiczny (ID_Proces_Technologiczny),
 );  
   
 create table Maszyny_Proces ( 
@@ -424,7 +423,7 @@ create table Maszyny_Proces (
   
 create table Maszyny ( 
     ID_Maszyny int IDENTITY(1,1) not null PRIMARY KEY, 
-	ID_Srodki_Trwale int not null FOREIGN KEY REFERENCES Srodki_Trwale (ID_Srodki_Trwale),
+	ID_Srodki_Trwale int not null FOREIGN KEY REFERENCES Srodki_Trwale (ID_Srodki_trwale),
     ID_Rodzaj_Maszyny int not null FOREIGN KEY REFERENCES Rodzaj_Maszyny (ID_Rodzaj_Maszyny),  
     Resurs_Rbh int not null, 
     Serwis_Co_Ile int not null,
