@@ -79,13 +79,13 @@ Nazwa varchar(20)not null
 );
  CREATE TABLE Wymiar_Urlopu (
 ID_Wymiar_Urlopu int IDENTITY(1,1) Primary key, 
-Iloœæ_dni varchar(20)not null
+Ilosc_dni varchar(20)not null
 );
 
 CREATE TABLE Urlop ( 
 ID_Urlop int IDENTITY (1,1) PRIMARY KEY, 
 ID_Pracownika int FOREIGN KEY REFERENCES Pracownicy(ID_Pracownika), 
-Data_rozpoczêcia DATE not null default GETDATE(), 
+Data_rozpoczecia DATE not null default GETDATE(), 
 Data_zakonczenia DATE not null default GETDATE(),
 ID_Rodzaj_Urlopu int FOREIGN KEY REFERENCES Rodzaj_Urlopu (ID_Rodzaj_Urlopu),
 ID_Wymiar_Urlopu int FOREIGN KEY REFERENCES Wymiar_Urlopu (ID_Wymiar_Urlopu)
