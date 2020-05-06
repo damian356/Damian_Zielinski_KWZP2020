@@ -556,9 +556,9 @@ VALUES --daty dopasowane
 INSERT INTO 
 	Zawartosc(ID_Polka,ID_Element,ID_Dostawy,Ilosc_Paczek) 
 VALUES 
-	(1,2,3,0.2),
+	(1,2,1,0.08),
 	(2,4,3,0.4),
-	(3,2,8,0.08),
+	(3,2,5,0.08),
 	(4,4,7,0.2)
 
 INSERT INTO 
