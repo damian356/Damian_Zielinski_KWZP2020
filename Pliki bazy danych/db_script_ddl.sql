@@ -202,6 +202,7 @@ Oznaczenie varchar(10)
 
 ---------------------------------------------------------TABELE Z KLUCZAMI OBCYMI MAGAZYN ---------------------------------------------------------
 CREATE TABLE Typy_cechy_rejestr(
+ID_Typy_cechy_rejestr int IDENTITY(1,1) PRIMARY KEY,
 ID_typ int
 	FOREIGN KEY REFERENCES
 	Elementy_Typy (ID_Element_Typ) ,
@@ -211,6 +212,7 @@ ID_cecha int
 )
 
 CREATE TABLE Polki_regaly (
+ID_Polki_regaly int IDENTITY(1,1) PRIMARY KEY,
 ID_regal int 
 	FOREIGN KEY REFERENCES 
 	Regaly(ID_regal),
