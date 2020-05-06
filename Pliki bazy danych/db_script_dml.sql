@@ -1,5 +1,5 @@
 
-USE Szwalnia11
+USE Szwalnia
 
 -------------------------------Inserty zarz¹dzanie i finanse-------------------------
 INSERT INTO Rodzaj_Etapu (Nazwa)
@@ -103,14 +103,14 @@ VALUES
 ('Urlop Macierzyñski'),
 ('Zwolnienie Lekarskie');
 
-INSERT INTO Wymiar_Urlopu (Iloœæ_dni)
+INSERT INTO Wymiar_Urlopu (Ilosc_dni)
 VALUES 
 ('20'),
 ('22'),
 ('26'),
 ('brak');
 
-INSERT into Urlop (ID_Pracownika, Data_rozpoczêcia, Data_zakonczenia, ID_Rodzaj_Urlopu, ID_Wymiar_Urlopu)
+INSERT into Urlop (ID_Pracownika, Data_rozpoczecia, Data_zakonczenia, ID_Rodzaj_Urlopu, ID_Wymiar_Urlopu)
 VALUES
 ('1','2020-03-15','2020-03-17', '3','4'),
 ('2','2020-03-18','2020-03-25', '1','2'),
@@ -557,9 +557,9 @@ INSERT INTO
 	Zawartosc(ID_Polka,ID_Element,ID_Dostawy,Ilosc_Paczek) 
 VALUES 
 	(1,4,3,0.2),
-	(1,4,3,0.4),
-	(1,4,8,0.08),
-	(1,4,7,0.2)
+	(2,4,3,0.4),
+	(3,4,8,0.08),
+	(4,4,7,0.2)
 
 INSERT INTO 
 	Dostawy_zawartosc(ID_dostawy,ID_element,ID_oferta,Ilosc_dostarczona) 
@@ -932,21 +932,21 @@ VALUES
 	
 	---------------------Inserty Produkcja-------------------------
 
-INSERT INTO Proces_Produkcyjny ( ID_Zamowienie_Element, Proponowana_data_dostawy_materialu, ID_Dostarczenia, Data_Rozpoczecia, Data_Zakonczenia, Uwagi )
+INSERT INTO Proces_Produkcyjny ( ID_Zamowienie_Element, Proponowana_data_dostawy_materialu,  Data_Rozpoczecia, Data_Zakonczenia, Uwagi )
 VALUES
 --zam 1
-(1, '2020-04-14 06:00:00', 1, '2020-04-15 09:21:15', '2020-04-17 10:52:00',  'brak uwag'),
-(2, '2020-04-14 06:00:00', 1, '2020-04-15 09:21:15', '2020-04-17 07:35:00',  'brak uwag'),
+(1, '2020-04-14 06:00:00',  '2020-04-15 09:21:15', '2020-04-17 10:52:00',  'brak uwag'),
+(2, '2020-04-14 06:00:00',  '2020-04-15 09:21:15', '2020-04-17 07:35:00',  'brak uwag'),
 --zam 2
-(3, '2020-04-17 06:00:00', 2, '2020-04-20 06:30:00', '2020-04-20 19:48:01', 'brak uwag'),
+(3, '2020-04-17 06:00:00',  '2020-04-20 06:30:00', '2020-04-20 19:48:01', 'brak uwag'),
 --zam 3
-(5, '2020-04-17 06:00:00', 3,'2020-04-17 09:30:00', '2020-04-18 09:34:00',  'brak uwag'),
-(6, '2020-04-17 06:00:00', 3,'2020-04-17 09:30:00', '2020-04-18 10:58:00',  'brak uwag'),
+(5, '2020-04-17 06:00:00', '2020-04-17 09:30:00', '2020-04-18 09:34:00',  'brak uwag'),
+(6, '2020-04-17 06:00:00', '2020-04-17 09:30:00', '2020-04-18 10:58:00',  'brak uwag'),
 --zam4
-(4, '2020-04-23 06:00:00', 4, '2020-04-24 12:20:00', '2020-04-27 20:52:01', 'brak uwag'),
+(4, '2020-04-23 06:00:00',  '2020-04-24 12:20:00', '2020-04-27 20:52:01', 'brak uwag'),
 --zam 5
-(7, '2020-04-24 06:00:00', 5,'2020-04-27 12:20:00', '2020-04-28 11:02:00',  'brak uwag'),
-(8, '2020-04-24 06:00:00', 5,'2020-04-27 12:20:00', '2020-04-30 12:20:00',  'brak uwag');
+(7, '2020-04-24 06:00:00', '2020-04-27 12:20:00', '2020-04-28 11:02:00',  'brak uwag'),
+(8, '2020-04-24 06:00:00', '2020-04-27 12:20:00', '2020-04-30 12:20:00',  'brak uwag');
 
 INSERT INTO Material_Na_Produkcji (ID_Procesu_Produkcyjnego, ID_Elementy_Proces, Odpad, Niezuzyty_material, Magazyn_odebral_material) 
 VALUES
