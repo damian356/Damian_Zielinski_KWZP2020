@@ -1,4 +1,4 @@
-USE master
+ï»¿USE master
 DROP DATABASE Szwalnia111
 GO
 CREATE DATABASE Szwalnia111
@@ -8,7 +8,7 @@ USE	Szwalnia111
 CREATE TABLE Rodzaj_Etapu  
 (ID_Etapu int IDENTITY(1,1) PRIMARY KEY, 
 Nazwa varchar(30) NOT NULL); 
-----------------------------------Finanse i Zarz¹dzanie--------------------------------------------------- 
+----------------------------------Finanse i ZarzÂ¹dzanie--------------------------------------------------- 
 
 CREATE TABLE Klienci ( 
 ID_Klienta int IDENTITY(1,1) PRIMARY KEY, 
@@ -79,13 +79,13 @@ Nazwa varchar(20)not null
 );
  CREATE TABLE Wymiar_Urlopu (
 ID_Wymiar_Urlopu int IDENTITY(1,1) Primary key, 
-Iloœæ_dni varchar(20)not null
+IloÅ“Ã¦_dni varchar(20)not null
 );
 
 CREATE TABLE Urlop ( 
 ID_Urlop int IDENTITY (1,1) PRIMARY KEY, 
 ID_Pracownika int FOREIGN KEY REFERENCES Pracownicy(ID_Pracownika), 
-Data_rozpoczêcia DATE not null default GETDATE(), 
+Data_rozpoczÃªcia DATE not null default GETDATE(), 
 Data_zakonczenia DATE not null default GETDATE(),
 ID_Rodzaj_Urlopu int FOREIGN KEY REFERENCES Rodzaj_Urlopu (ID_Rodzaj_Urlopu),
 ID_Wymiar_Urlopu int FOREIGN KEY REFERENCES Wymiar_Urlopu (ID_Wymiar_Urlopu)
@@ -139,7 +139,7 @@ Podatek varchar(100) not null,
 ); 
 
 --------------------------------------------------------- MAGAZYN--------------------------------------------------------- 
---Magazyn tabele s³ownikowe 
+--Magazyn tabele sÂ³ownikowe 
 CREATE TABLE Statusy (
 ID_statusu int IDENTITY(1,1) Primary key, 
 Status_zatw varchar(9)
@@ -377,7 +377,7 @@ CREATE TABLE Zamowienie_Element (
 );
 ---------------------------------------------------------KONIEC MAGAZYN---------------------------------------------------------
  
----------------------- Pocz¹tek Przygotowanie produkcji------------------------- 
+---------------------- PoczÂ¹tek Przygotowanie produkcji------------------------- 
 create table Rodzaj_Obslugi ( 
     ID_Rodzaj_Obslugi int IDENTITY(1,1) not null PRIMARY KEY,  
     Nazwa varchar(30) not null,
@@ -472,10 +472,15 @@ CREATE TABLE Proces_Produkcyjny
 (ID_Procesu_Produkcyjnego int IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 ID_Zamowienie_Element int FOREIGN KEY REFERENCES Zamowienie_Element (ID_Zamowienie_Element) NOT NULL, 
 Proponowana_data_dostawy_materialu smalldatetime NULL,
-ID_Dostarczenia int FOREIGN KEY REFERENCES Dostarczenia_Wewn (ID_Dostarczenia) NULL,
 Data_Rozpoczecia smalldatetime NULL, 
 Data_Zakonczenia smalldatetime NULL, 
 Uwagi varchar(300) NULL); 
+
+CREATE TABLE Odbior_Dostarczenia
+(ID_Odbior_Dostarczenia int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+ID_Procesu_Produkcyjnego int FOREIGN KEY REFERENCES Proces_Produkcyjny (ID_Procesu_Produkcyjnego) NOT NULL,
+ID_Dostarczenia int FOREIGN KEY REFERENCES Dostarczenia_Wewn (ID_Dostarczenia) NOT NULL,
+Odebrano bit NULL);
   
 CREATE TABLE Material_Na_Produkcji 
 (ID_Material_Na_Produkcji int IDENTITY(1,1) PRIMARY KEY NOT NULL, 
