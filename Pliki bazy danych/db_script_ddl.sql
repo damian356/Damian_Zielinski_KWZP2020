@@ -1,9 +1,9 @@
 ﻿USE master
-DROP DATABASE Szwalnia111
+DROP DATABASE Szwalnia
 GO
-CREATE DATABASE Szwalnia111
+CREATE DATABASE Szwalnia
 GO
-USE	Szwalnia111
+USE	Szwalnia
 
 CREATE TABLE Rodzaj_Etapu  
 (ID_Etapu int IDENTITY(1,1) PRIMARY KEY, 
@@ -315,7 +315,7 @@ ID_Element int
 ID_Dostawy int
 	FOREIGN KEY REFERENCES
 	Zamowienia_Dostawy(ID_Dostawy),
-Ilosc_Paczek int
+Ilosc_Paczek real
 )
 
 CREATE TABLE Dostawy_Zawartosc (
