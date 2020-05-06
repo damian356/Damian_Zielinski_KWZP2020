@@ -48,3 +48,24 @@ FROM     dbo.Realizacja_Procesu INNER JOIN
 				  
 				  
 GO
+
+-- widok Procesu Produkcyjnego dla ID Zamowienia
+CREATE VIEW vZamowienieProcesyProdukcyjne 
+AS
+SELECT        dbo.Proces_Produkcyjny.ID_Procesu_Produkcyjnego, dbo.Zamowienie_Element.ID_Zamowienia, dbo.Proces_Produkcyjny.ID_Zamowienie_Element, dbo.Elementy_Typy.Typ, 
+                         dbo.Proces_Produkcyjny.Proponowana_data_dostawy_materialu, dbo.Proces_Produkcyjny.Data_Rozpoczecia, dbo.Proces_Produkcyjny.Data_Zakonczenia, dbo.Proces_Produkcyjny.Uwagi
+FROM            dbo.Proces_Produkcyjny INNER JOIN
+                         dbo.Zamowienie_Element ON dbo.Proces_Produkcyjny.ID_Zamowienie_Element = dbo.Zamowienie_Element.ID_Zamowienie_Element INNER JOIN
+                         dbo.Elementy ON dbo.Zamowienie_Element.ID_Element = dbo.Elementy.ID_Element INNER JOIN
+                         dbo.Elementy_Typy ON dbo.Elementy.ID_Element_Typ = dbo.Elementy_Typy.ID_Element_Typ
+GO
+
+-- widok Procesu Produkcyjnego dla ID Zamowienie Element
+
+CREATE VIEW vIdZamowienieElementProcesProdukcyjny 
+AS
+SELECT        dbo.Zamowienie_Element.ID_Zamowienie_Element, dbo.Proces_Produkcyjny.ID_Procesu_Produkcyjnego, dbo.Proces_Produkcyjny.ID_Zamowienie_Element AS Expr1, 
+                         dbo.Proces_Produkcyjny.Proponowana_data_dostawy_materialu, dbo.Proces_Produkcyjny.Data_Rozpoczecia, dbo.Proces_Produkcyjny.Data_Zakonczenia, dbo.Proces_Produkcyjny.Uwagi
+FROM            dbo.Proces_Produkcyjny INNER JOIN
+                         dbo.Zamowienie_Element ON dbo.Proces_Produkcyjny.ID_Zamowienie_Element = dbo.Zamowienie_Element.ID_Zamowienie_Element
+GO
