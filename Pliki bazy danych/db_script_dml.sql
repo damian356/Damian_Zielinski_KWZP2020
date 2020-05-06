@@ -588,11 +588,11 @@ VALUES --ID_miejsca 2 to produkcja
 	(11,2,3,-4,2,'2020-04-23'), -- 10 by³o nadmiaru, 4 niezu¿yte (ale u Angeliki jest 4, wiêc tak zostawiamy)
 	(11,4,3,-3,2,'2020-04-23'), --tez pozostalosc
 	(11,9,3,-168,2,'2020-04-23'), -- wydana ca³a dostawa ( z tymi resztkami jest juz 175)
-	(12,3,4,4,2,'2020-04-14'),  -- wraca z produkcji
+	(12,3,2,4,2,'2020-04-14'),  -- wraca z produkcji
 	(12,3,4,8,2,'2020-04-14'),
 	(11,2,3,4,2,'2020-04-14'),
 	(11,4,3,3,2,'2020-04-19'),
-	(11,8,4,4,2,'2020-04-21'),
+	(11,8,2,4,2,'2020-04-21'),
 	(12,7,4,4,2,'2020-04-21')
 INSERT INTO 
 	Dostarczenia_Zewn(ID_pracownicy,ID_zamowienia,ID_element,Ilosc_dostarczona,ID_miejsca,Data_dostarczenia) 
